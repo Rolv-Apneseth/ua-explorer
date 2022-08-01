@@ -1,0 +1,81 @@
+@use "../abstracts/media_queries" as *;
+
+html {
+    font-family: "roboto", sans-serif;
+    scroll-behavior: smooth;
+
+    p {
+        line-height: 1.5;
+    }
+}
+
+body {
+    font-size: var(--font-size-m);
+    background-color: var(--clr-main);
+    color: var(--clr-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition-property: background-color, color;
+    transition-duration: var(--animation-duration);
+}
+
+main {
+    position: relative;
+    transition: filter var(--animation-duration);
+    margin: 0 var(--site-margins);
+    padding: var(--space-l) 0;
+    overflow-x: visible;
+
+    &.blur {
+        filter: blur(0.75rem) brightness(45%);
+    }
+
+    & > section + section {
+        margin-bottom: var(--space-l);
+    }
+
+    .page-heading {
+        color: var(--clr-text-important);
+        margin-bottom: var(--space-l);
+    }
+
+    section h3 {
+        margin-bottom: var(--space-m);
+        color: var(--clr-text-important);
+        font-size: var(--font-size-l);
+        font-weight: bold;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--space-s);
+
+        &::before {
+            content: "#";
+            font-weight: 900;
+            color: var(--clr-secondary);
+        }
+        &::after {
+            content: "";
+            position: relative;
+            background-color: var(--clr-secondary);
+            height: var(--thickness-s);
+            width: 100%;
+        }
+    }
+
+    @include desktop-medium-up {
+        width: 65rem;
+        margin: 0 auto;
+    }
+    @include desktop-large-up {
+        width: 80rem;
+    }
+}
+
+a {
+    color: var(--clr-text-important);
+}
+
+img {
+    width: 100%;
+}

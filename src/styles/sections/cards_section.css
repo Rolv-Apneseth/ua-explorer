@@ -1,0 +1,9 @@
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-ml);
+}
+
+/*# sourceMappingURL=cards_section.css.map */
