@@ -14,6 +14,7 @@ const Index = () => {
     const [filterContinent, setFilterContinent] = React.useState(
         possibleContinentOptions[0]
     )
+    const [filterName, setFilterName] = React.useState("")
     // const [query, setQuery] = React.useState("Harry")
     // const [page, setPage] = React.useState(1)
 
@@ -40,6 +41,8 @@ const Index = () => {
                 setSearchBy={setSearchBy}
                 filterContinent={filterContinent}
                 setFilterContinent={setFilterContinent}
+                filterName={filterName}
+                setFilterName={setFilterName}
             />
 
             <CardsSection
@@ -48,6 +51,7 @@ const Index = () => {
                 isLoading={isLoading}
                 searchBy={searchBy}
                 filterContinent={filterContinent}
+                filterName={filterName}
             />
         </Layout>
     )

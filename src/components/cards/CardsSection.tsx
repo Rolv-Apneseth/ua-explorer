@@ -13,6 +13,7 @@ import {
     possibleScoreLabels,
     possibleContinentOptions,
 } from "../../utils/constants"
+import { uniqueId } from "underscore"
 
 interface Props {
     data: Array<UrbanArea>
@@ -20,6 +21,7 @@ interface Props {
     isLoading: boolean
     searchBy: string
     filterContinent: string
+    filterName: string
 }
 
 export const CardsSection = ({
@@ -28,6 +30,7 @@ export const CardsSection = ({
     isLoading,
     searchBy,
     filterContinent,
+    filterName,
 }: Props) => {
     if (isLoading) {
         return <LoadingWheel />
@@ -58,20 +61,27 @@ export const CardsSection = ({
             newData.sort(getSortingFunctionForUrbanAreasByOverallScore())
         }
         setData(newData)
-    }, [searchBy, filterContinent])
+    }, [searchBy])
 
     return (
         <section className="cards-section">
             {data.map((urbanArea: UrbanArea) => {
                 // FILTER URBAN AREAS
-                if (
+                const passContinent =
                     filterContinent === possibleContinentOptions[0] ||
                     filterContinent === urbanArea.continent
-                ) {
+                const passName =
+                    filterName === "" ||
+                    urbanArea.fullName
+                        .toLowerCase()
+                        .includes(filterName.toLowerCase())
+
+                if (passContinent && passName) {
                     return (
                         <CardCity
                             urbanArea={urbanArea}
                             topStatistic={topStatistic}
+                            key={uniqueId("CardCity")}
                         />
                     )
                 }

@@ -11,6 +11,8 @@ interface Props {
     setSearchBy: Function
     filterContinent: string
     setFilterContinent: Function
+    filterName: string
+    setFilterName: Function
 }
 
 export const SearchOptions = ({
@@ -19,6 +21,8 @@ export const SearchOptions = ({
     setSearchBy,
     filterContinent,
     setFilterContinent,
+    filterName,
+    setFilterName,
 }: Props) => {
     const handleChangeSearchBy = (
         event: React.ChangeEvent<HTMLSelectElement>
@@ -30,6 +34,12 @@ export const SearchOptions = ({
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
         setFilterContinent(event.target.value)
+    }
+
+    const handleChangeFilterName = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setFilterName(event.target.value)
     }
 
     return (
@@ -53,6 +63,12 @@ export const SearchOptions = ({
                     <option value={option}>{option}</option>
                 ))}
             </select>
+
+            <input
+                type="text"
+                value={filterName}
+                onChange={handleChangeFilterName}
+            />
         </form>
     )
 }
