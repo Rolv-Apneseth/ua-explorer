@@ -8,16 +8,27 @@ import {
     getSortingFunctionForUrbanAreasByOverallScore,
     getSortingFunctionForUrbanAreasByScoreLabel,
 } from "../../utils/helpers"
-import { searchByOptions, possibleScoreLabels } from "../../utils/constants"
+import {
+    searchByOptions,
+    possibleScoreLabels,
+    possibleContinentOptions,
+} from "../../utils/constants"
 
 interface Props {
     data: Array<UrbanArea>
     setData: Function
     isLoading: boolean
     searchBy: string
+    filterContinent: string
 }
 
-export const CardsSection = ({ data, setData, isLoading, searchBy }: Props) => {
+export const CardsSection = ({
+    data,
+    setData,
+    isLoading,
+    searchBy,
+    filterContinent,
+}: Props) => {
     if (isLoading) {
         return <LoadingWheel />
     }
@@ -47,13 +58,24 @@ export const CardsSection = ({ data, setData, isLoading, searchBy }: Props) => {
             newData.sort(getSortingFunctionForUrbanAreasByOverallScore())
         }
         setData(newData)
-    }, [searchBy])
+    }, [searchBy, filterContinent])
 
     return (
         <section className="cards-section">
-            {data.map((urbanArea: UrbanArea) => (
-                <CardCity urbanArea={urbanArea} topStatistic={topStatistic} />
-            ))}
+            {data.map((urbanArea: UrbanArea) => {
+                // FILTER URBAN AREAS
+                if (
+                    filterContinent === possibleContinentOptions[0] ||
+                    filterContinent === urbanArea.continent
+                ) {
+                    return (
+                        <CardCity
+                            urbanArea={urbanArea}
+                            topStatistic={topStatistic}
+                        />
+                    )
+                }
+            })}
         </section>
     )
 }

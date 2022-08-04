@@ -1,5 +1,5 @@
 import React from "react"
-import { possibleScoreLabels, searchByOptions } from "../utils/constants"
+import { possibleContinentOptions, searchByOptions } from "../utils/constants"
 import { debounce } from "underscore"
 import { getUrbanAreas } from "../utils/api"
 import { UrbanArea } from "../utils/apiData"
@@ -9,14 +9,13 @@ import Layout from "../components/Layout"
 
 const Index = () => {
     const [data, setData] = React.useState<UrbanArea[]>([])
-    const [isLoading, setIsLoading] = React.useState<boolean>(true)
+    const [isLoading, setIsLoading] = React.useState(true)
     const [searchBy, setSearchBy] = React.useState(searchByOptions[0])
-    const [scoreLabel, setScoreLabel] = React.useState<undefined | string>(
-        undefined
+    const [filterContinent, setFilterContinent] = React.useState(
+        possibleContinentOptions[0]
     )
     // const [query, setQuery] = React.useState("Harry")
     // const [page, setPage] = React.useState(1)
-    // const [isLoadingResults, setIsLoadingResults] = React.useState(false)
 
     React.useEffect(() => {
         if (data.length === 0) {
@@ -29,12 +28,6 @@ const Index = () => {
                     setIsLoading(false)
                 })
         }
-
-        if (possibleScoreLabels.includes(searchBy)) {
-            setScoreLabel(searchBy)
-        } else {
-            setScoreLabel(undefined)
-        }
     }, [searchBy])
 
     return (
@@ -45,6 +38,8 @@ const Index = () => {
                 isLoading={isLoading}
                 searchBy={searchBy}
                 setSearchBy={setSearchBy}
+                filterContinent={filterContinent}
+                setFilterContinent={setFilterContinent}
             />
 
             <CardsSection
@@ -52,6 +47,7 @@ const Index = () => {
                 setData={setData}
                 isLoading={isLoading}
                 searchBy={searchBy}
+                filterContinent={filterContinent}
             />
         </Layout>
     )

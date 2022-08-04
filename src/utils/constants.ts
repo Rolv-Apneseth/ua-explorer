@@ -1,3 +1,12 @@
+export const possibleContinentOptions = [
+    "Filter by continent",
+    "Africa",
+    "Asia",
+    "Europe",
+    "North America",
+    "Oceania",
+    "South America",
+]
 export const possibleScoreLabels = [
     "Business Freedom",
     "Commute",
