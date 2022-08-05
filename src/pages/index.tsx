@@ -1,6 +1,5 @@
 import React from "react"
 import { possibleContinentOptions, searchByOptions } from "../utils/constants"
-import { debounce } from "underscore"
 import { getUrbanAreas } from "../utils/api"
 import { UrbanArea } from "../utils/apiData"
 import { CardsSection } from "../components/cards/CardsSection"
@@ -47,7 +46,6 @@ const Index = () => {
 
             <CardsSection
                 data={data}
-                setData={setData}
                 isLoading={isLoading}
                 searchBy={searchBy}
                 filterContinent={filterContinent}

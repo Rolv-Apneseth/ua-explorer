@@ -1,5 +1,6 @@
 import React from "react"
-import { UrbanArea } from "../../utils/api"
+import { motion, AnimatePresence } from "framer-motion"
+import { UrbanArea } from "../../utils/apiData"
 import { LoadingWheel } from "../LoadingWheel"
 import { CardCity } from "./CardCity"
 import "../../styles/sections/cards_section.css"
@@ -17,7 +18,6 @@ import { uniqueId } from "underscore"
 
 interface Props {
     data: Array<UrbanArea>
-    setData: Function
     isLoading: boolean
     searchBy: string
     filterContinent: string
@@ -26,7 +26,6 @@ interface Props {
 
 export const CardsSection = ({
     data,
-    setData,
     isLoading,
     searchBy,
     filterContinent,
@@ -42,9 +41,24 @@ export const CardsSection = ({
     const resetTopStatistic = () => setTopStatistic(undefined)
     const updateTopStatistic = () => setTopStatistic(searchBy)
 
+    const [displayData, setDisplayData] = React.useState<UrbanArea[]>([])
+
     React.useEffect(() => {
-        // SORT URBAN AREAS
         let newData = [...data]
+
+        newData = newData.filter((urbanArea: UrbanArea) => {
+            const passContinent =
+                filterContinent === possibleContinentOptions[0] ||
+                filterContinent === urbanArea.continent
+            const passName =
+                filterName === "" ||
+                urbanArea.fullName
+                    .toLowerCase()
+                    .includes(filterName.toLowerCase())
+
+            return passContinent && passName
+        })
+        // SORT URBAN AREAS
         // BY: Score categories
         if (possibleScoreLabels.includes(searchBy)) {
             updateTopStatistic()
@@ -60,32 +74,34 @@ export const CardsSection = ({
             updateTopStatistic()
             newData.sort(getSortingFunctionForUrbanAreasByOverallScore())
         }
-        setData(newData)
+        setDisplayData(newData)
     }, [searchBy])
 
     return (
-        <section className="cards-section">
-            {data.map((urbanArea: UrbanArea) => {
-                // FILTER URBAN AREAS
-                const passContinent =
-                    filterContinent === possibleContinentOptions[0] ||
-                    filterContinent === urbanArea.continent
-                const passName =
-                    filterName === "" ||
-                    urbanArea.fullName
-                        .toLowerCase()
-                        .includes(filterName.toLowerCase())
+        <motion.section layout className="cards-section">
+            <AnimatePresence>
+                {displayData.map((urbanArea: UrbanArea) => {
+                    // FILTER URBAN AREAS
+                    const passContinent =
+                        filterContinent === possibleContinentOptions[0] ||
+                        filterContinent === urbanArea.continent
+                    const passName =
+                        filterName === "" ||
+                        urbanArea.fullName
+                            .toLowerCase()
+                            .includes(filterName.toLowerCase())
 
-                if (passContinent && passName) {
-                    return (
-                        <CardCity
-                            urbanArea={urbanArea}
-                            topStatistic={topStatistic}
-                            key={uniqueId("CardCity")}
-                        />
-                    )
-                }
-            })}
-        </section>
+                    if (passContinent && passName) {
+                        return (
+                            <CardCity
+                                key={uniqueId("CardCity")}
+                                urbanArea={urbanArea}
+                                topStatistic={topStatistic}
+                            />
+                        )
+                    }
+                })}
+            </AnimatePresence>
+        </motion.section>
     )
 }
