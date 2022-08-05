@@ -65,6 +65,7 @@ export const SearchOptions = ({
             </select>
 
             <input
+                disabled={isLoading}
                 type="text"
                 value={filterName}
                 onChange={handleChangeFilterName}
