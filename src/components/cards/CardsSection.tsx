@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import { UrbanArea } from "../../utils/apiData"
 import { LoadingWheel } from "../LoadingWheel"
 import { CardCity } from "./CardCity"
@@ -14,7 +14,6 @@ import {
     possibleScoreLabels,
     possibleContinentOptions,
 } from "../../utils/constants"
-import { uniqueId } from "underscore"
 
 interface Props {
     data: Array<UrbanArea>
@@ -44,9 +43,10 @@ export const CardsSection = ({
     const [displayData, setDisplayData] = React.useState<UrbanArea[]>([])
 
     React.useEffect(() => {
-        let newData = [...data]
+        let newDisplayData = [...data]
 
-        newData = newData.filter((urbanArea: UrbanArea) => {
+        // FILTER URBAN AREAS
+        newDisplayData = newDisplayData.filter((urbanArea: UrbanArea) => {
             const passContinent =
                 filterContinent === possibleContinentOptions[0] ||
                 filterContinent === urbanArea.continent
@@ -58,27 +58,30 @@ export const CardsSection = ({
 
             return passContinent && passName
         })
+
         // SORT URBAN AREAS
         // BY: Score categories
         if (possibleScoreLabels.includes(searchBy)) {
             updateTopStatistic()
-            newData.sort(getSortingFunctionForUrbanAreasByScoreLabel(searchBy))
+            newDisplayData.sort(
+                getSortingFunctionForUrbanAreasByScoreLabel(searchBy)
+            )
         }
         // BY: Alphabetical
         else if (searchBy === searchByOptions[0]) {
             resetTopStatistic()
-            newData.sort(getSortingFunctionForUrbanAreasByAlphabetical())
+            newDisplayData.sort(getSortingFunctionForUrbanAreasByAlphabetical())
         }
         // BY: Overall score
         else if (searchBy === searchByOptions[1]) {
             updateTopStatistic()
-            newData.sort(getSortingFunctionForUrbanAreasByOverallScore())
+            newDisplayData.sort(getSortingFunctionForUrbanAreasByOverallScore())
         }
-        setDisplayData(newData)
-    }, [searchBy])
+        setDisplayData(newDisplayData)
+    }, [searchBy, data])
 
     return (
-        <motion.section layout className="cards-section">
+        <section className="cards-section">
             <AnimatePresence>
                 {displayData.map((urbanArea: UrbanArea) => {
                     // FILTER URBAN AREAS
@@ -94,7 +97,7 @@ export const CardsSection = ({
                     if (passContinent && passName) {
                         return (
                             <CardCity
-                                key={uniqueId("CardCity")}
+                                key={urbanArea.ua_id}
                                 urbanArea={urbanArea}
                                 topStatistic={topStatistic}
                             />
@@ -102,6 +105,6 @@ export const CardsSection = ({
                     }
                 })}
             </AnimatePresence>
-        </motion.section>
+        </section>
     )
 }

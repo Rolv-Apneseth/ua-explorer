@@ -110,6 +110,7 @@ export class UrbanArea {
     name: string
     fullName: string
     continent: string
+    ua_id: string
     // Images
     imageMobile: string
     imageWeb: string
@@ -128,6 +129,7 @@ export class UrbanArea {
         this.name = fetchedUrbanArea.name
         this.fullName = fetchedUrbanArea.full_name
         this.continent = fetchedUrbanArea.continent
+        this.ua_id = fetchedUrbanArea.ua_id
 
         // IMAGES
         const images = this.embeddedCategories["ua:images"].photos[0].image

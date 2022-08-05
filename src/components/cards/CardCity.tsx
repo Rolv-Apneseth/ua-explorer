@@ -25,12 +25,16 @@ export const CardCity = ({ urbanArea, topStatistic }: Props) => {
 
     React.useEffect(() => {}, [topStatistic])
 
+    const transitionXValue: number = 200
+    const transitionDuration: number = 0.6
+
     return (
         <motion.section
             layout
-            // initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, x: -transitionXValue }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: transitionXValue }}
+            transition={{ duration: transitionDuration }}
             className="card-city"
         >
             <div>{urbanArea.fullName}</div>
