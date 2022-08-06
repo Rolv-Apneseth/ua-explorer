@@ -1,4 +1,5 @@
 import { possibleDetailLabels } from "./constants"
+import { getShortSummary } from "./helpers"
 
 // SAMPLE RESPONSE
 // _embedded
@@ -23,6 +24,7 @@ import { possibleDetailLabels } from "./constants"
 export interface FetchedUrbanArea {
     _embedded: UrbanAreaEmbeddedCategories
     ua_id: string
+    teleport_city_url: string
     name: string
     full_name: string
     slug: string
@@ -111,6 +113,7 @@ export class UrbanArea {
     fullName: string
     continent: string
     ua_id: string
+    cityUrl: string
     // Images
     imageMobile: string
     imageWeb: string
@@ -130,6 +133,7 @@ export class UrbanArea {
         this.fullName = fetchedUrbanArea.full_name
         this.continent = fetchedUrbanArea.continent
         this.ua_id = fetchedUrbanArea.ua_id
+        this.cityUrl = fetchedUrbanArea.teleport_city_url
 
         // IMAGES
         const images = this.embeddedCategories["ua:images"].photos[0].image

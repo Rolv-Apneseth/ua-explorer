@@ -46,6 +46,11 @@ export const CardCity = ({ urbanArea, topStatistic }: Props) => {
 
             {/* Completely trusting the developers of the Teleport API with this one */}
             <div dangerouslySetInnerHTML={{ __html: urbanArea.summary }} />
+
+            {console.log(urbanArea.cityUrl)}
+            <a href={urbanArea.cityUrl} target="_blank" rel="noreferrer">
+                Learn More
+            </a>
         </motion.section>
     )
 }
