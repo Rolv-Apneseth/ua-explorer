@@ -1,7 +1,11 @@
 import React from "react"
+import {
+    defaultAnimationChangeInPosition,
+    defaultAnimationDurationInSeconds,
+} from "../../utils/constants"
 import { UrbanArea } from "../../utils/apiData"
 import "../../styles/sections/card_city.css"
-import { searchByOptions } from "../../utils/constants"
+import { sortByOptions } from "../../utils/constants"
 import { motion } from "framer-motion"
 
 interface Props {
@@ -11,7 +15,7 @@ interface Props {
 
 export const CardCity = ({ urbanArea, topStatistic }: Props) => {
     const getDataToDisplay = () => {
-        if (topStatistic === searchByOptions[1]) {
+        if (topStatistic === sortByOptions[1]) {
             return <div>{`${topStatistic}: ${urbanArea.overallScore}`}</div>
         }
         return (
@@ -25,16 +29,13 @@ export const CardCity = ({ urbanArea, topStatistic }: Props) => {
 
     React.useEffect(() => {}, [topStatistic])
 
-    const transitionXValue: number = 200
-    const transitionDuration: number = 0.6
-
     return (
         <motion.section
             layout
-            initial={{ opacity: 0, x: -transitionXValue }}
+            initial={{ opacity: 0, x: `-${defaultAnimationChangeInPosition}` }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: transitionXValue }}
-            transition={{ duration: transitionDuration }}
+            exit={{ opacity: 0, x: defaultAnimationChangeInPosition }}
+            transition={{ duration: defaultAnimationDurationInSeconds }}
             className="card-city"
         >
             <div>{urbanArea.fullName}</div>

@@ -1,14 +1,11 @@
 import React from "react"
 import "../../styles/sections/card_city.css"
-import {
-    possibleContinentOptions,
-    searchByOptions,
-} from "../../utils/constants"
+import { possibleContinentOptions, sortByOptions } from "../../utils/constants"
 
 interface Props {
     isLoading: boolean
-    searchBy: string
-    setSearchBy: Function
+    sortBy: string
+    setSortBy: Function
     filterContinent: string
     setFilterContinent: Function
     filterName: string
@@ -17,8 +14,8 @@ interface Props {
 
 export const SearchOptions = ({
     isLoading,
-    searchBy,
-    setSearchBy,
+    sortBy,
+    setSortBy,
     filterContinent,
     setFilterContinent,
     filterName,
@@ -27,7 +24,7 @@ export const SearchOptions = ({
     const handleChangeSearchBy = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        setSearchBy(event.target.value)
+        setSortBy(event.target.value)
     }
 
     const handleChangeFilterContinent = (
@@ -46,10 +43,10 @@ export const SearchOptions = ({
         <form>
             <select
                 disabled={isLoading}
-                value={searchBy}
+                value={sortBy}
                 onChange={handleChangeSearchBy}
             >
-                {searchByOptions.map(option => (
+                {sortByOptions.map(option => (
                     <option value={option}>{option}</option>
                 ))}
             </select>

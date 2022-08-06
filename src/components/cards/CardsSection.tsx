@@ -10,15 +10,16 @@ import {
     getSortingFunctionForUrbanAreasByScoreLabel,
 } from "../../utils/helpers"
 import {
-    searchByOptions,
-    possibleScoreLabels,
+    sortByOptions,
     possibleContinentOptions,
+    defaultFilterByContinent,
+    defaultFilterByName,
 } from "../../utils/constants"
 
 interface Props {
     data: Array<UrbanArea>
     isLoading: boolean
-    searchBy: string
+    sortBy: string
     filterContinent: string
     filterName: string
 }
@@ -26,7 +27,7 @@ interface Props {
 export const CardsSection = ({
     data,
     isLoading,
-    searchBy,
+    sortBy,
     filterContinent,
     filterName,
 }: Props) => {
@@ -38,18 +39,20 @@ export const CardsSection = ({
         undefined
     )
     const resetTopStatistic = () => setTopStatistic(undefined)
-    const updateTopStatistic = () => setTopStatistic(searchBy)
+    const updateTopStatistic = () => setTopStatistic(sortBy)
 
-    const [displayData, setDisplayData] = React.useState<UrbanArea[]>([])
+    const [displayData, setDisplayData] = React.useState<UrbanArea[]>([...data])
 
     React.useEffect(() => {
         let newDisplayData = [...data]
 
         // FILTER URBAN AREAS
         newDisplayData = newDisplayData.filter((urbanArea: UrbanArea) => {
+            // BY: Continent
             const passContinent =
                 filterContinent === possibleContinentOptions[0] ||
                 filterContinent === urbanArea.continent
+            // BY: Name (text search)
             const passName =
                 filterName === "" ||
                 urbanArea.fullName
@@ -60,25 +63,26 @@ export const CardsSection = ({
         })
 
         // SORT URBAN AREAS
-        // BY: Score categories
-        if (possibleScoreLabels.includes(searchBy)) {
-            updateTopStatistic()
-            newDisplayData.sort(
-                getSortingFunctionForUrbanAreasByScoreLabel(searchBy)
-            )
-        }
         // BY: Alphabetical
-        else if (searchBy === searchByOptions[0]) {
+        if (sortBy === sortByOptions[0]) {
             resetTopStatistic()
             newDisplayData.sort(getSortingFunctionForUrbanAreasByAlphabetical())
         }
         // BY: Overall score
-        else if (searchBy === searchByOptions[1]) {
+        else if (sortBy === sortByOptions[1]) {
             updateTopStatistic()
             newDisplayData.sort(getSortingFunctionForUrbanAreasByOverallScore())
         }
+        // BY: Score categories
+        else {
+            updateTopStatistic()
+            newDisplayData.sort(
+                getSortingFunctionForUrbanAreasByScoreLabel(sortBy)
+            )
+        }
+
         setDisplayData(newDisplayData)
-    }, [searchBy, data])
+    }, [sortBy, filterContinent, filterName, data])
 
     return (
         <section className="cards-section">

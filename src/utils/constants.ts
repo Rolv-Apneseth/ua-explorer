@@ -26,11 +26,6 @@ export const possibleScoreLabels = [
     "Travel Connectivity",
     "Venture Capital",
 ]
-export const searchByOptions = [
-    "Alphabetical",
-    "Overall Score",
-    ...possibleScoreLabels,
-]
 
 export const possibleDetailLabels = [
     "Inflation [Teleport score]",
@@ -61,3 +56,17 @@ export const possibleDetailLabels = [
     "Average low temperature (Celsius)",
     "Weather type",
 ]
+
+export const sortByOptions = [
+    "Alphabetical",
+    "Overall Score",
+    ...possibleScoreLabels,
+]
+
+export const defaultSortBy = sortByOptions[0]
+export const defaultFilterByContinent = possibleContinentOptions[0]
+export const defaultFilterByName = ""
+
+// ANIMATION
+export const defaultAnimationChangeInPosition: string = "100%"
+export const defaultAnimationDurationInSeconds: number = 1

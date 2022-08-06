@@ -1,5 +1,9 @@
 import React from "react"
-import { possibleContinentOptions, searchByOptions } from "../utils/constants"
+import {
+    defaultFilterByContinent,
+    defaultFilterByName,
+    defaultSortBy,
+} from "../utils/constants"
 import { getUrbanAreas } from "../utils/api"
 import { UrbanArea } from "../utils/apiData"
 import { CardsSection } from "../components/cards/CardsSection"
@@ -9,13 +13,11 @@ import Layout from "../components/Layout"
 const Index = () => {
     const [data, setData] = React.useState<UrbanArea[]>([])
     const [isLoading, setIsLoading] = React.useState(true)
-    const [searchBy, setSearchBy] = React.useState(searchByOptions[0])
+    const [sortBy, setSortBy] = React.useState(defaultSortBy)
     const [filterContinent, setFilterContinent] = React.useState(
-        possibleContinentOptions[0]
+        defaultFilterByContinent
     )
-    const [filterName, setFilterName] = React.useState("")
-    // const [query, setQuery] = React.useState("Harry")
-    // const [page, setPage] = React.useState(1)
+    const [filterName, setFilterName] = React.useState(defaultFilterByName)
 
     React.useEffect(() => {
         if (data.length === 0) {
@@ -28,7 +30,7 @@ const Index = () => {
                     setIsLoading(false)
                 })
         }
-    }, [searchBy])
+    }, [sortBy])
 
     return (
         <Layout>
@@ -36,8 +38,8 @@ const Index = () => {
 
             <SearchOptions
                 isLoading={isLoading}
-                searchBy={searchBy}
-                setSearchBy={setSearchBy}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
                 filterContinent={filterContinent}
                 setFilterContinent={setFilterContinent}
                 filterName={filterName}
@@ -47,7 +49,7 @@ const Index = () => {
             <CardsSection
                 data={data}
                 isLoading={isLoading}
-                searchBy={searchBy}
+                sortBy={sortBy}
                 filterContinent={filterContinent}
                 filterName={filterName}
             />
