@@ -5,5 +5,9 @@
   justify-content: center;
   gap: var(--space-ml);
 }
+.cards-section br,
+.cards-section i {
+  display: none;
+}
 
 /*# sourceMappingURL=cards_section.css.map */

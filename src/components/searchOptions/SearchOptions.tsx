@@ -21,7 +21,7 @@ export const SearchOptions = ({
     filterName,
     setFilterName,
 }: Props) => {
-    const handleChangeSearchBy = (
+    const handleChangeSortBy = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
         setSortBy(event.target.value)
@@ -44,7 +44,7 @@ export const SearchOptions = ({
             <select
                 disabled={isLoading}
                 value={sortBy}
-                onChange={handleChangeSearchBy}
+                onChange={handleChangeSortBy}
             >
                 {sortByOptions.map(option => (
                     <option value={option}>{option}</option>

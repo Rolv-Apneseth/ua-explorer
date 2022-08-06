@@ -4,4 +4,9 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-ml);
+
+    br,
+    i {
+        display: none;
+    }
 }
