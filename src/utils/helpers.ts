@@ -2,9 +2,13 @@ import { UrbanArea } from "./apiData"
 
 export const getSortingFunctionForUrbanAreasByScoreLabel =
     (label: string) => (a: UrbanArea, b: UrbanArea) => {
+        console.log(
+            parseFloat(b.getScoreValueByLabel(label).score),
+            parseFloat(a.getScoreValueByLabel(label).score)
+        )
         return (
-            parseInt(b.getScoreValueByLabel(label).score) -
-            parseInt(a.getScoreValueByLabel(label).score)
+            parseFloat(b.getScoreValueByLabel(label).score) -
+            parseFloat(a.getScoreValueByLabel(label).score)
         )
     }
 
@@ -18,5 +22,5 @@ export const getSortingFunctionForUrbanAreasByAlphabetical =
 
 export const getSortingFunctionForUrbanAreasByOverallScore =
     () => (a: UrbanArea, b: UrbanArea) => {
-        return parseInt(b.overallScore) - parseInt(a.overallScore)
+        return parseFloat(b.overallScore) - parseInt(a.overallScore)
     }
