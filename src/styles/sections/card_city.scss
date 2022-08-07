@@ -11,4 +11,46 @@
         height: 200px;
         object-fit: cover;
     }
+
+    h4 {
+        font-weight: bold;
+    }
+
+    .urban-area-scores {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        & > section {
+            color: var(--clr-text-important);
+            position: relative;
+            padding: var(--space-xs);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-xs);
+
+            p {
+                font-weight: bold;
+                font-size: var(--font-size-s);
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                height: 0.15rem;
+                bottom: 0;
+            }
+            &::before {
+                background-color: var(--react-clr-bg);
+                left: 0;
+                width: var(--react-score-percentage);
+            }
+            &::after {
+                background-color: #ccc;
+                right: 0;
+                width: calc(100% - var(--react-score-percentage));
+            }
+        }
+    }
 }

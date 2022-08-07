@@ -18,6 +18,7 @@ const Index = () => {
         defaultFilterByContinent
     )
     const [filterName, setFilterName] = React.useState(defaultFilterByName)
+    const [showAllScores, setShowAllScores] = React.useState(false)
 
     React.useEffect(() => {
         if (data.length === 0) {
@@ -44,6 +45,8 @@ const Index = () => {
                 setFilterContinent={setFilterContinent}
                 filterName={filterName}
                 setFilterName={setFilterName}
+                showAllScores={showAllScores}
+                setShowAllScores={setShowAllScores}
             />
 
             <CardsSection
@@ -52,6 +55,7 @@ const Index = () => {
                 sortBy={sortBy}
                 filterContinent={filterContinent}
                 filterName={filterName}
+                showAllScores={showAllScores}
             />
         </Layout>
     )

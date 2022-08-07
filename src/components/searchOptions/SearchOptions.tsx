@@ -10,6 +10,8 @@ interface Props {
     setFilterContinent: Function
     filterName: string
     setFilterName: Function
+    showAllScores: boolean
+    setShowAllScores: Function
 }
 
 export const SearchOptions = ({
@@ -20,6 +22,8 @@ export const SearchOptions = ({
     setFilterContinent,
     filterName,
     setFilterName,
+    showAllScores,
+    setShowAllScores,
 }: Props) => {
     const handleChangeSortBy = (
         event: React.ChangeEvent<HTMLSelectElement>
@@ -37,6 +41,13 @@ export const SearchOptions = ({
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         setFilterName(event.target.value)
+    }
+
+    const onClickShowAllScores = (
+        event: React.ChangeEvent<HTMLButtonElement>
+    ) => {
+        event.preventDefault()
+        setShowAllScores(!showAllScores)
     }
 
     return (
@@ -67,6 +78,14 @@ export const SearchOptions = ({
                 value={filterName}
                 onChange={handleChangeFilterName}
             />
+
+            <button
+                disabled={isLoading}
+                onClick={onClickShowAllScores}
+                className={showAllScores ? "pressed" : ""}
+            >
+                Show All Scores
+            </button>
         </form>
     )
 }

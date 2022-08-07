@@ -1,20 +1,15 @@
 import React from "react"
-import { AnimatePresence } from "framer-motion"
+import { AnimateSharedLayout } from "framer-motion"
 import { UrbanArea } from "../../utils/apiData"
 import { LoadingWheel } from "../LoadingWheel"
-import { CardCity } from "./CardCity"
+import { CardUrbanArea } from "./CardUrbanArea"
 import "../../styles/sections/cards_section.css"
 import {
     getSortingFunctionForUrbanAreasByAlphabetical,
     getSortingFunctionForUrbanAreasByOverallScore,
     getSortingFunctionForUrbanAreasByScoreLabel,
 } from "../../utils/helpers"
-import {
-    sortByOptions,
-    possibleContinentOptions,
-    defaultFilterByContinent,
-    defaultFilterByName,
-} from "../../utils/constants"
+import { sortByOptions, possibleContinentOptions } from "../../utils/constants"
 
 interface Props {
     data: Array<UrbanArea>
@@ -22,6 +17,7 @@ interface Props {
     sortBy: string
     filterContinent: string
     filterName: string
+    showAllScores: boolean
 }
 
 export const CardsSection = ({
@@ -30,6 +26,7 @@ export const CardsSection = ({
     sortBy,
     filterContinent,
     filterName,
+    showAllScores,
 }: Props) => {
     if (isLoading) {
         return <LoadingWheel />
@@ -86,7 +83,7 @@ export const CardsSection = ({
 
     return (
         <section className="cards-section">
-            <AnimatePresence>
+            <AnimateSharedLayout>
                 {displayData.map((urbanArea: UrbanArea) => {
                     // FILTER URBAN AREAS
                     const passContinent =
@@ -100,15 +97,16 @@ export const CardsSection = ({
 
                     if (passContinent && passName) {
                         return (
-                            <CardCity
+                            <CardUrbanArea
                                 key={urbanArea.ua_id}
                                 urbanArea={urbanArea}
                                 topStatistic={topStatistic}
+                                showAllScores={showAllScores}
                             />
                         )
                     }
                 })}
-            </AnimatePresence>
+            </AnimateSharedLayout>
         </section>
     )
 }

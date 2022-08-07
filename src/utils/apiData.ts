@@ -1,5 +1,4 @@
 import { possibleDetailLabels } from "./constants"
-import { getShortSummary } from "./helpers"
 
 // SAMPLE RESPONSE
 // _embedded
@@ -95,11 +94,11 @@ interface UrbanAreaScoresContainer {
     "Travel Connectivity"?: UrbanAreaScore
     "Venture Capital"?: UrbanAreaScore
 }
-class UrbanAreaScore {
+export class UrbanAreaScore {
     color: string
     score: string
 
-    constructor(color: string = "#343434", score: string = "0.00") {
+    constructor(color: string = "", score: string = "0.00") {
         this.color = color
         this.score = score
     }

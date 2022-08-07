@@ -1,11 +1,7 @@
-import { UrbanArea } from "./apiData"
+import { UrbanArea, UrbanAreaScore } from "./apiData"
 
 export const getSortingFunctionForUrbanAreasByScoreLabel =
     (label: string) => (a: UrbanArea, b: UrbanArea) => {
-        console.log(
-            parseFloat(b.getScoreValueByLabel(label).score),
-            parseFloat(a.getScoreValueByLabel(label).score)
-        )
         return (
             parseFloat(b.getScoreValueByLabel(label).score) -
             parseFloat(a.getScoreValueByLabel(label).score)
@@ -24,3 +20,18 @@ export const getSortingFunctionForUrbanAreasByOverallScore =
     () => (a: UrbanArea, b: UrbanArea) => {
         return parseFloat(b.overallScore) - parseInt(a.overallScore)
     }
+
+export const sortScoreLabelsArray = (
+    a: Array<string | UrbanAreaScore>,
+    b: Array<string | UrbanAreaScore>
+) => {
+    // Can't be equal so no 0 value given
+    return a[0] > b[0] ? 1 : -1
+}
+
+export const getScoreColour = (score: number, outOf: number) => {
+    // Hues: 0=red, 120 = green
+    const hue = ((score / outOf) * 120).toFixed(0)
+
+    return `hsl(${hue},100%,var(--clr-scores-lightness))`
+}

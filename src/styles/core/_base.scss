@@ -30,37 +30,9 @@ main {
         filter: blur(0.75rem) brightness(45%);
     }
 
-    & > section + section {
-        margin-bottom: var(--space-l);
-    }
-
     .page-heading {
         color: var(--clr-text-important);
         margin-bottom: var(--space-l);
-    }
-
-    section h3 {
-        margin-bottom: var(--space-m);
-        color: var(--clr-text-important);
-        font-size: var(--font-size-l);
-        font-weight: bold;
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: var(--space-s);
-
-        &::before {
-            content: "#";
-            font-weight: 900;
-            color: var(--clr-secondary);
-        }
-        &::after {
-            content: "";
-            position: relative;
-            background-color: var(--clr-secondary);
-            height: var(--thickness-s);
-            width: 100%;
-        }
     }
 
     @include desktop-medium-up {

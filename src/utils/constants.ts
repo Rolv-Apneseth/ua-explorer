@@ -70,3 +70,6 @@ export const defaultFilterByName = ""
 // ANIMATION
 export const defaultAnimationChangeInPosition: string = "100%"
 export const defaultAnimationDurationInSeconds: number = 1
+
+// STYLING
+export const scoreColourBreakingPoints = { bad: 35, good: 60 }

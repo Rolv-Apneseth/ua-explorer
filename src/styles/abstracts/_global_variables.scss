@@ -22,6 +22,11 @@
     --clr-text: hsl(0, 0%, 75%);
     --clr-text-important: var(--clr-white);
 
+    --clr-good: #77b300;
+    --clr-warning: yellow;
+    --clr-bad: #ff3300;
+    --clr-scores-lightness: 50%;
+
     // Hex to filter found here: https://codepen.io/sosuke/pen/Pjoqqp
     --filter-white: invert(100%) sepia(6%) saturate(168%) hue-rotate(277deg)
         brightness(112%) contrast(88%);
@@ -79,4 +84,6 @@
     --clr-main: white;
     --clr-text: hsl(0, 0%, 40%);
     --clr-text-important: var(--clr-black);
+
+    --clr-scores-lightness: 35%;
 }

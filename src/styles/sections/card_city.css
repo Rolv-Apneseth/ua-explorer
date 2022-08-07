@@ -11,5 +11,41 @@
   height: 200px;
   object-fit: cover;
 }
+.card-city h4 {
+  font-weight: bold;
+}
+.card-city .urban-area-scores {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.card-city .urban-area-scores > section {
+  color: var(--clr-text-important);
+  position: relative;
+  padding: var(--space-xs);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+}
+.card-city .urban-area-scores > section p {
+  font-weight: bold;
+  font-size: var(--font-size-s);
+}
+.card-city .urban-area-scores > section::before, .card-city .urban-area-scores > section::after {
+  content: "";
+  position: absolute;
+  height: 0.15rem;
+  bottom: 0;
+}
+.card-city .urban-area-scores > section::before {
+  background-color: var(--react-clr-bg);
+  left: 0;
+  width: var(--react-score-percentage);
+}
+.card-city .urban-area-scores > section::after {
+  background-color: #ccc;
+  right: 0;
+  width: calc(100% - var(--react-score-percentage));
+}
 
 /*# sourceMappingURL=card_city.css.map */
