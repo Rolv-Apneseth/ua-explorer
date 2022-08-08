@@ -1,6 +1,10 @@
 import React from "react"
 import "../../styles/sections/card_city.css"
-import { possibleContinentOptions, sortByOptions } from "../../utils/constants"
+import {
+    possibleContinentOptions,
+    possibleUrbanAreasPerPage,
+    sortByOptions,
+} from "../../utils/constants"
 
 interface Props {
     isLoading: boolean
@@ -12,6 +16,10 @@ interface Props {
     setFilterName: Function
     showAllScores: boolean
     setShowAllScores: Function
+    maxResultsPerPage: string
+    setMaxResultsPerPage: Function
+    currentPageNumber: number
+    setCurrentPageNumber: Function
 }
 
 export const SearchOptions = ({
@@ -24,6 +32,10 @@ export const SearchOptions = ({
     setFilterName,
     showAllScores,
     setShowAllScores,
+    currentPageNumber,
+    setCurrentPageNumber,
+    maxResultsPerPage,
+    setMaxResultsPerPage,
 }: Props) => {
     const handleChangeSortBy = (
         event: React.ChangeEvent<HTMLSelectElement>
@@ -50,9 +62,17 @@ export const SearchOptions = ({
         setShowAllScores(!showAllScores)
     }
 
+    const handleChangeTotalUrbanAreasToShow = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setMaxResultsPerPage(event.target.value)
+    }
+
     return (
         <form>
+            <label htmlFor="sort-urban-areas">Sort by: </label>
             <select
+                name="sort-urban-areas"
                 disabled={isLoading}
                 value={sortBy}
                 onChange={handleChangeSortBy}
@@ -62,7 +82,9 @@ export const SearchOptions = ({
                 ))}
             </select>
 
+            <label htmlFor="filter-urban-area-continent">Continent: </label>
             <select
+                name="filter-urban-area-continent"
                 disabled={isLoading}
                 value={filterContinent}
                 onChange={handleChangeFilterContinent}
@@ -72,7 +94,9 @@ export const SearchOptions = ({
                 ))}
             </select>
 
+            <label htmlFor="filter-urban-area-name">Filter by name: </label>
             <input
+                name="filter-urban-area-name"
                 disabled={isLoading}
                 type="text"
                 value={filterName}
@@ -86,6 +110,18 @@ export const SearchOptions = ({
             >
                 Show All Scores
             </button>
+
+            <label htmlFor="total-urban-area">Results Per Page</label>
+            <select
+                name="total-urban-areas-to-show"
+                disabled={isLoading}
+                value={maxResultsPerPage}
+                onChange={handleChangeTotalUrbanAreasToShow}
+            >
+                {possibleUrbanAreasPerPage.map(option => (
+                    <option value={option}>{option}</option>
+                ))}
+            </select>
         </form>
     )
 }

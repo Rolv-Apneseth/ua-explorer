@@ -3,6 +3,7 @@ import {
     defaultFilterByContinent,
     defaultFilterByName,
     defaultSortBy,
+    defaultUrbanAreasPerPage,
 } from "../utils/constants"
 import { getUrbanAreas } from "../utils/api"
 import { UrbanArea } from "../utils/apiData"
@@ -19,6 +20,10 @@ const Index = () => {
     )
     const [filterName, setFilterName] = React.useState(defaultFilterByName)
     const [showAllScores, setShowAllScores] = React.useState(false)
+    const [currentPageNumber, setCurrentPageNumber] = React.useState(0)
+    const [maxResultsPerPage, setMaxResultsPerPage] = React.useState(
+        defaultUrbanAreasPerPage
+    )
 
     React.useEffect(() => {
         if (data.length === 0) {
@@ -47,6 +52,10 @@ const Index = () => {
                 setFilterName={setFilterName}
                 showAllScores={showAllScores}
                 setShowAllScores={setShowAllScores}
+                currentPageNumber={currentPageNumber}
+                setCurrentPageNumber={setCurrentPageNumber}
+                maxResultsPerPage={maxResultsPerPage}
+                setMaxResultsPerPage={setMaxResultsPerPage}
             />
 
             <CardsSection
@@ -56,6 +65,8 @@ const Index = () => {
                 filterContinent={filterContinent}
                 filterName={filterName}
                 showAllScores={showAllScores}
+                currentPageNumber={currentPageNumber}
+                maxResultsPerPage={maxResultsPerPage}
             />
         </Layout>
     )

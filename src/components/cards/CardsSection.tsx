@@ -18,6 +18,8 @@ interface Props {
     filterContinent: string
     filterName: string
     showAllScores: boolean
+    currentPageNumber: number
+    maxResultsPerPage: string
 }
 
 export const CardsSection = ({
@@ -27,6 +29,8 @@ export const CardsSection = ({
     filterContinent,
     filterName,
     showAllScores,
+    currentPageNumber,
+    maxResultsPerPage,
 }: Props) => {
     if (isLoading) {
         return <LoadingWheel />
@@ -79,33 +83,59 @@ export const CardsSection = ({
         }
 
         setDisplayData(newDisplayData)
-    }, [sortBy, filterContinent, filterName, data])
+    }, [
+        sortBy,
+        filterContinent,
+        filterName,
+        data,
+        maxResultsPerPage,
+        currentPageNumber,
+    ])
+
+    const getSliceForCurrentlyDisplayedData = () => {
+        const totalUrbanAreasAvailable = displayData.length
+        const maxResultsPerPageInt = parseInt(maxResultsPerPage)
+        // cosnt maxPages =
+        const toShow =
+            maxResultsPerPageInt <= totalUrbanAreasAvailable
+                ? maxResultsPerPageInt
+                : totalUrbanAreasAvailable
+
+        const start: number = toShow * currentPageNumber
+        const end: number = toShow + start
+        console.log(maxResultsPerPage, toShow, start, end)
+        console.log(displayData.slice(start, end))
+
+        return displayData.slice(start, end)
+    }
 
     return (
         <section className="cards-section">
             <AnimateSharedLayout>
-                {displayData.map((urbanArea: UrbanArea) => {
-                    // FILTER URBAN AREAS
-                    const passContinent =
-                        filterContinent === possibleContinentOptions[0] ||
-                        filterContinent === urbanArea.continent
-                    const passName =
-                        filterName === "" ||
-                        urbanArea.fullName
-                            .toLowerCase()
-                            .includes(filterName.toLowerCase())
+                {getSliceForCurrentlyDisplayedData().map(
+                    (urbanArea: UrbanArea) => {
+                        // FILTER URBAN AREAS
+                        const passContinent =
+                            filterContinent === possibleContinentOptions[0] ||
+                            filterContinent === urbanArea.continent
+                        const passName =
+                            filterName === "" ||
+                            urbanArea.fullName
+                                .toLowerCase()
+                                .includes(filterName.toLowerCase())
 
-                    if (passContinent && passName) {
-                        return (
-                            <CardUrbanArea
-                                key={urbanArea.ua_id}
-                                urbanArea={urbanArea}
-                                topStatistic={topStatistic}
-                                showAllScores={showAllScores}
-                            />
-                        )
+                        if (passContinent && passName) {
+                            return (
+                                <CardUrbanArea
+                                    key={urbanArea.ua_id}
+                                    urbanArea={urbanArea}
+                                    topStatistic={topStatistic}
+                                    showAllScores={showAllScores}
+                                />
+                            )
+                        }
                     }
-                })}
+                )}
             </AnimateSharedLayout>
         </section>
     )

@@ -1,4 +1,5 @@
 import React from "react"
+import { motion } from "framer-motion"
 import {
     defaultAnimationChangeInPosition,
     defaultAnimationDurationInSeconds,
@@ -6,7 +7,6 @@ import {
 import { CardUrbanAreaScores } from "./CardUrbanAreaScores"
 import { UrbanArea } from "../../utils/apiData"
 import "../../styles/sections/card_city.css"
-import { motion } from "framer-motion"
 import { getScoreColour } from "../../utils/helpers"
 
 interface Props {
@@ -34,7 +34,7 @@ export const CardUrbanArea = ({
             <motion.img layout src={urbanArea.imageWeb} alt={urbanArea.name} />
 
             <motion.h4 layout>
-                Rating:&nbsp;
+                Overall Score:&nbsp;
                 <span
                     style={{
                         color: getScoreColour(
@@ -63,11 +63,12 @@ export const CardUrbanArea = ({
 
             <motion.a
                 layout
+                className="urban-area-learn-more"
                 href={urbanArea.cityUrl}
                 target="_blank"
                 rel="noreferrer"
             >
-                Learn More
+                Learn more
             </motion.a>
         </motion.section>
     )
