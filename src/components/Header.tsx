@@ -37,14 +37,14 @@ const Header: React.FC<Props> = props => {
                     {/*     </Link> */}
                     {/* </li> */}
                     <li>
-                        <Link
+                        <a
                             onClick={deactivate}
-                            to="https://developers.teleport.org/api/"
+                            href="https://developers.teleport.org/api/"
                             target="_blank"
                             rel="noopener"
                         >
                             API
-                        </Link>
+                        </a>
                     </li>
                     <li>
                         <ThemeToggle
