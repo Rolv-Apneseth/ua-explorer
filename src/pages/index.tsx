@@ -40,7 +40,7 @@ const Index = () => {
 
     return (
         <Layout>
-            <h1 className="page-heading">City Explorer</h1>
+            <h1 className="page-heading">Urban Area Explorer</h1>
 
             <SearchOptions
                 isLoading={isLoading}
