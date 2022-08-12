@@ -1,5 +1,5 @@
 export const possibleContinentOptions = [
-    "Filter by continent",
+    "Any",
     "Africa",
     "Asia",
     "Europe",
@@ -26,7 +26,6 @@ export const possibleScoreLabels = [
     "Travel Connectivity",
     "Venture Capital",
 ]
-
 export const possibleDetailLabels = [
     "Inflation [Teleport score]",
     "Monthly public transport",
@@ -56,16 +55,18 @@ export const possibleDetailLabels = [
     "Average low temperature (Celsius)",
     "Weather type",
 ]
-
 export const sortByOptions = [
     "Alphabetical",
     "Overall Score",
     ...possibleScoreLabels,
 ]
 
+export const possibleUrbanAreasPerPage = ["10", "25", "50", "100"]
+
 export const defaultSortBy = sortByOptions[0]
 export const defaultFilterByContinent = possibleContinentOptions[0]
 export const defaultFilterByName = ""
+export const defaultUrbanAreasPerPage = possibleUrbanAreasPerPage[0]
 
 // ANIMATION
 export const defaultAnimationChangeInPosition: string = "100%"
