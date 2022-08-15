@@ -21,6 +21,7 @@ const Index = () => {
     const [filterName, setFilterName] = React.useState(defaultFilterByName)
     const [showAllScores, setShowAllScores] = React.useState(false)
     const [currentPageNumber, setCurrentPageNumber] = React.useState(0)
+    const [maxPossiblePages, setMaxPossiblePages] = React.useState(1)
     const [maxResultsPerPage, setMaxResultsPerPage] = React.useState(
         defaultUrbanAreasPerPage
     )
@@ -54,6 +55,7 @@ const Index = () => {
                 setShowAllScores={setShowAllScores}
                 currentPageNumber={currentPageNumber}
                 setCurrentPageNumber={setCurrentPageNumber}
+                maxPossiblePages={maxPossiblePages}
                 maxResultsPerPage={maxResultsPerPage}
                 setMaxResultsPerPage={setMaxResultsPerPage}
             />
@@ -66,6 +68,8 @@ const Index = () => {
                 filterName={filterName}
                 showAllScores={showAllScores}
                 currentPageNumber={currentPageNumber}
+                maxPossiblePages={maxPossiblePages}
+                setMaxPossiblePages={setMaxPossiblePages}
                 maxResultsPerPage={maxResultsPerPage}
             />
         </Layout>

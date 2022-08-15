@@ -1,4 +1,5 @@
 import React from "react"
+import { range } from "underscore"
 import "../../styles/sections/card_city.css"
 import {
     possibleContinentOptions,
@@ -16,10 +17,11 @@ interface Props {
     setFilterName: Function
     showAllScores: boolean
     setShowAllScores: Function
-    maxResultsPerPage: string
-    setMaxResultsPerPage: Function
     currentPageNumber: number
     setCurrentPageNumber: Function
+    maxPossiblePages: number
+    maxResultsPerPage: string
+    setMaxResultsPerPage: Function
 }
 
 export const SearchOptions = ({
@@ -34,6 +36,7 @@ export const SearchOptions = ({
     setShowAllScores,
     currentPageNumber,
     setCurrentPageNumber,
+    maxPossiblePages,
     maxResultsPerPage,
     setMaxResultsPerPage,
 }: Props) => {
@@ -65,7 +68,14 @@ export const SearchOptions = ({
     const handleChangeTotalUrbanAreasToShow = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
+        setCurrentPageNumber(0)
         setMaxResultsPerPage(event.target.value)
+    }
+
+    const handleChangeCurrentPage = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setCurrentPageNumber(event.target.value)
     }
 
     return (
@@ -119,6 +129,18 @@ export const SearchOptions = ({
                 onChange={handleChangeTotalUrbanAreasToShow}
             >
                 {possibleUrbanAreasPerPage.map(option => (
+                    <option value={option}>{option}</option>
+                ))}
+            </select>
+
+            <label htmlFor="current-page">Page</label>
+            <select
+                name="total-urban-areas-to-show"
+                disabled={isLoading}
+                value={currentPageNumber}
+                onChange={handleChangeCurrentPage}
+            >
+                {range(maxPossiblePages).map(option => (
                     <option value={option}>{option}</option>
                 ))}
             </select>

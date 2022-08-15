@@ -19,6 +19,8 @@ interface Props {
     filterName: string
     showAllScores: boolean
     currentPageNumber: number
+    maxPossiblePages: number
+    setMaxPossiblePages: Function
     maxResultsPerPage: string
 }
 
@@ -30,6 +32,8 @@ export const CardsSection = ({
     filterName,
     showAllScores,
     currentPageNumber,
+    maxPossiblePages,
+    setMaxPossiblePages,
     maxResultsPerPage,
 }: Props) => {
     if (isLoading) {
@@ -82,6 +86,9 @@ export const CardsSection = ({
             )
         }
 
+        setMaxPossiblePages(
+            Math.ceil(newDisplayData.length / parseInt(maxResultsPerPage))
+        )
         setDisplayData(newDisplayData)
     }, [
         sortBy,
@@ -101,10 +108,8 @@ export const CardsSection = ({
                 ? maxResultsPerPageInt
                 : totalUrbanAreasAvailable
 
-        const start: number = toShow * currentPageNumber
-        const end: number = toShow + start
-        console.log(maxResultsPerPage, toShow, start, end)
-        console.log(displayData.slice(start, end))
+        const start = toShow * currentPageNumber
+        const end = toShow + start
 
         return displayData.slice(start, end)
     }
