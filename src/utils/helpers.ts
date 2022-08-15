@@ -1,4 +1,5 @@
 import { UrbanArea, UrbanAreaScore } from "./apiData"
+import { possibleColourCSSVariableNames, scoreBreakPoints } from "./constants"
 
 export const getSortingFunctionForUrbanAreasByScoreLabel =
     (label: string) => (a: UrbanArea, b: UrbanArea) => {
@@ -30,8 +31,15 @@ export const sortScoreLabelsArray = (
 }
 
 export const getScoreColour = (score: number, outOf: number) => {
-    // Hues: 0=red, 120 = green
-    const hue = ((score / outOf) * 120).toFixed(0)
+    const resultingValue = score / outOf
 
-    return `hsl(${hue},100%,var(--clr-scores-lightness))`
+    let result = 1
+
+    if (resultingValue < scoreBreakPoints[0]) {
+        result = 0
+    } else if (resultingValue > scoreBreakPoints[1]) {
+        result = 2
+    }
+
+    return `var(--clr-${possibleColourCSSVariableNames[result]})`
 }

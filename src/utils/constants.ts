@@ -73,4 +73,5 @@ export const defaultAnimationChangeInPosition: string = "100%"
 export const defaultAnimationDurationInSeconds: number = 1
 
 // STYLING
-export const scoreColourBreakingPoints = { bad: 35, good: 60 }
+export const scoreBreakPoints = [0.3, 0.5] // i.e. score < 30% = bad
+export const possibleColourCSSVariableNames = ["bad", "warning", "good"] // i.e. var(--clr-bad)

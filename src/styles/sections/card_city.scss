@@ -1,7 +1,10 @@
+@use "../components/hover_link" as *;
+
 .card-city {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-s);
+    height: 100%;
     align-items: center;
     justify-content: space-between;
     background-color: var(--clr-main);
@@ -16,12 +19,54 @@
         font-weight: bold;
     }
 
+    .urban-area-main {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+        align-items: center;
+        // justify-content: space-between;
+    }
+
+    .urban-area-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: var(--space-m);
+    }
+
+    .urban-area-button {
+        padding: var(--space-xs) var(--space-s);
+        color: var(--clr-text-important);
+        // border: solid 1px var(--clr-secondary);
+        border-bottom: solid 1px var(--clr-secondary);
+        outline: none;
+
+        border-radius: var(--space-xs);
+        transition-property: background-color, outline;
+        transition-duration: var(--transition-duration);
+
+        img {
+            max-height: var(--space-m);
+        }
+
+        &:hover {
+            background-color: hsla(
+                var(--clr-secondary-h),
+                var(--clr-secondary-s),
+                var(--clr-secondary-l),
+                0.2
+            );
+            // border: solid 1px var(--clr-secondary);
+            outline: var(--clr-secondary) solid 1px;
+        }
+    }
+
     .urban-area-scores {
         display: flex;
         flex-direction: column;
         width: 100%;
 
-        & > section {
+        .urban-area-score {
             color: var(--clr-text-important);
             position: relative;
             padding: var(--space-xs);
@@ -34,22 +79,27 @@
                 font-size: var(--font-size-s);
             }
 
+            .urban-area-score-number {
+                color: var(--react-score-clr);
+            }
+
             &::before,
             &::after {
                 content: "";
                 position: absolute;
-                height: 0.15rem;
+                height: 2px;
                 bottom: 0;
             }
             &::before {
-                background-color: var(--react-clr-bg);
                 left: 0;
+                background-color: var(--clr-score-bar-full);
                 width: var(--react-score-percentage);
             }
             &::after {
-                background-color: #ccc;
                 right: 0;
+                background-color: var(--clr-score-bar-empty);
                 width: calc(100% - var(--react-score-percentage));
+                opacity: 0.5;
             }
         }
     }

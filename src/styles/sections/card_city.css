@@ -1,7 +1,8 @@
 .card-city {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-s);
+  height: 100%;
   align-items: center;
   justify-content: space-between;
   background-color: var(--clr-main);
@@ -14,12 +15,40 @@
 .card-city h4 {
   font-weight: bold;
 }
+.card-city .urban-area-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  align-items: center;
+}
+.card-city .urban-area-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-m);
+}
+.card-city .urban-area-button {
+  padding: var(--space-xs) var(--space-s);
+  color: var(--clr-text-important);
+  border-bottom: solid 1px var(--clr-secondary);
+  outline: none;
+  border-radius: var(--space-xs);
+  transition-property: background-color, outline;
+  transition-duration: var(--transition-duration);
+}
+.card-city .urban-area-button img {
+  max-height: var(--space-m);
+}
+.card-city .urban-area-button:hover {
+  background-color: hsla(var(--clr-secondary-h), var(--clr-secondary-s), var(--clr-secondary-l), 0.2);
+  outline: var(--clr-secondary) solid 1px;
+}
 .card-city .urban-area-scores {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.card-city .urban-area-scores > section {
+.card-city .urban-area-scores .urban-area-score {
   color: var(--clr-text-important);
   position: relative;
   padding: var(--space-xs);
@@ -27,25 +56,29 @@
   justify-content: space-between;
   margin-bottom: var(--space-xs);
 }
-.card-city .urban-area-scores > section p {
+.card-city .urban-area-scores .urban-area-score p {
   font-weight: bold;
   font-size: var(--font-size-s);
 }
-.card-city .urban-area-scores > section::before, .card-city .urban-area-scores > section::after {
+.card-city .urban-area-scores .urban-area-score .urban-area-score-number {
+  color: var(--react-score-clr);
+}
+.card-city .urban-area-scores .urban-area-score::before, .card-city .urban-area-scores .urban-area-score::after {
   content: "";
   position: absolute;
-  height: 0.15rem;
+  height: 2px;
   bottom: 0;
 }
-.card-city .urban-area-scores > section::before {
-  background-color: var(--react-clr-bg);
+.card-city .urban-area-scores .urban-area-score::before {
   left: 0;
+  background-color: var(--clr-score-bar-full);
   width: var(--react-score-percentage);
 }
-.card-city .urban-area-scores > section::after {
-  background-color: #ccc;
+.card-city .urban-area-scores .urban-area-score::after {
   right: 0;
+  background-color: var(--clr-score-bar-empty);
   width: calc(100% - var(--react-score-percentage));
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=card_city.css.map */

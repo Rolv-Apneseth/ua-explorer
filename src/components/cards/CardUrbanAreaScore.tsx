@@ -14,20 +14,21 @@ export const CardUrbanAreaScore = ({
     scoreObject,
 }: Props) => {
     const scoreFloat = parseFloat(scoreObject.score)
+    const scoreMax = 10
 
     return (
         <section
+            className="urban-area-score"
             key={`${urbanArea.ua_id}-CardUrbanAreaScore-${label}`}
             style={{
-                // Variables used to make score progress bar
-                "--react-clr-bg": scoreObject.color,
-                "--react-score-percentage": `${scoreFloat * 10}%`,
+                // Variable used to make score progress bar
+                "--react-score-percentage": `${scoreFloat * scoreMax}%`,
+                // Colour for score i.e. green = good, red = bad
+                "--react-score-clr": getScoreColour(scoreFloat, scoreMax),
             }}
         >
-            <p>{label}</p>
-            <p style={{ color: getScoreColour(scoreFloat, 10) }}>
-                {scoreObject.score}
-            </p>
+            <p className="urban-area-score-label">{label}</p>
+            <p className="urban-area-score-number">{scoreObject.score}</p>
         </section>
     )
 }
