@@ -26,8 +26,10 @@ export const HandlerPageNumber = ({
                 value={currentPageNumber}
                 onChange={handleChangeCurrentPage}
             >
-                {range(maxPossiblePages).map(option => (
-                    <option value={option}>{option}</option>
+                <option value={0}>1</option>
+
+                {range(1, maxPossiblePages).map(option => (
+                    <option value={option}>{option + 1}</option>
                 ))}
             </select>
         </section>
