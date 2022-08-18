@@ -41,8 +41,8 @@ export const SearchOptions = ({
     setMaxResultsPerPage,
 }: Props) => {
     return (
-        !isLoading && (
-            <form>
+        <form>
+            <fieldset disabled={isLoading}>
                 <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
 
                 <HandlerFilterContinent
@@ -71,7 +71,7 @@ export const SearchOptions = ({
                     showAllScores={showAllScores}
                     setShowAllScores={setShowAllScores}
                 />
-            </form>
-        )
+            </fieldset>
+        </form>
     )
 }
