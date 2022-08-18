@@ -1,12 +1,11 @@
 import React from "react"
 import "../../styles/sections/card_city.css"
-import {
-    possibleContinentOptions,
-    possibleUrbanAreasPerPage,
-    sortByOptions,
-} from "../../utils/constants"
+import { HandlerFilterContinent } from "./HandlerFilterContinent"
+import { HandlerFilterName } from "./HandlerFilterName"
 import { HandlerMaxResultsPerPage } from "./HandlerMaxResultsPerPage"
 import { HandlerPageNumber } from "./HandlerPageNumber"
+import { HandlerShowAllScores } from "./HandlerShowAllScores"
+import { HandlerSortBy } from "./HandlerSortBy"
 
 interface Props {
     isLoading: boolean
@@ -41,70 +40,20 @@ export const SearchOptions = ({
     maxResultsPerPage,
     setMaxResultsPerPage,
 }: Props) => {
-    const handleChangeSortBy = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        setSortBy(event.target.value)
-    }
-
-    const handleChangeFilterContinent = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        setFilterContinent(event.target.value)
-    }
-
-    const handleChangeFilterName = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        setFilterName(event.target.value)
-    }
-
-    const onClickShowAllScores = (
-        event: React.ChangeEvent<HTMLButtonElement>
-    ) => {
-        event.preventDefault()
-        setShowAllScores(!showAllScores)
-    }
-
     return (
         !isLoading && (
             <form>
-                <label htmlFor="sort-urban-areas">Sort by: </label>
-                <select
-                    name="sort-urban-areas"
-                    value={sortBy}
-                    onChange={handleChangeSortBy}
-                >
-                    {sortByOptions.map(option => (
-                        <option value={option}>{option}</option>
-                    ))}
-                </select>
+                <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
 
-                <label htmlFor="filter-urban-area-continent">Continent: </label>
-                <select
-                    name="filter-urban-area-continent"
-                    value={filterContinent}
-                    onChange={handleChangeFilterContinent}
-                >
-                    {possibleContinentOptions.map(option => (
-                        <option value={option}>{option}</option>
-                    ))}
-                </select>
-
-                <label htmlFor="filter-urban-area-name">Filter by name: </label>
-                <input
-                    name="filter-urban-area-name"
-                    type="text"
-                    value={filterName}
-                    onChange={handleChangeFilterName}
+                <HandlerFilterContinent
+                    filterContinent={filterContinent}
+                    setFilterContinent={setFilterContinent}
                 />
 
-                <button
-                    onClick={onClickShowAllScores}
-                    className={showAllScores ? "pressed" : ""}
-                >
-                    Show All Scores
-                </button>
+                <HandlerFilterName
+                    filterName={filterName}
+                    setFilterName={setFilterName}
+                />
 
                 <HandlerMaxResultsPerPage
                     setCurrentPageNumber={setCurrentPageNumber}
@@ -116,6 +65,11 @@ export const SearchOptions = ({
                     currentPageNumber={currentPageNumber}
                     setCurrentPageNumber={setCurrentPageNumber}
                     maxPossiblePages={maxPossiblePages}
+                />
+
+                <HandlerShowAllScores
+                    showAllScores={showAllScores}
+                    setShowAllScores={setShowAllScores}
                 />
             </form>
         )
