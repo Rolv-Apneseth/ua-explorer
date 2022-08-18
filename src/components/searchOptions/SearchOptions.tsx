@@ -40,6 +40,11 @@ export const SearchOptions = ({
     maxResultsPerPage,
     setMaxResultsPerPage,
 }: Props) => {
+    // Reset page number when any of the filters/sorts change
+    React.useEffect(() => {
+        setCurrentPageNumber(0)
+    }, [filterName, filterContinent, sortBy, maxResultsPerPage])
+
     return (
         <form>
             <fieldset disabled={isLoading}>
@@ -56,7 +61,6 @@ export const SearchOptions = ({
                 />
 
                 <HandlerMaxResultsPerPage
-                    setCurrentPageNumber={setCurrentPageNumber}
                     maxResultsPerPage={maxResultsPerPage}
                     setMaxResultsPerPage={setMaxResultsPerPage}
                 />

@@ -68,7 +68,6 @@ const Index = () => {
                 filterName={filterName}
                 showAllScores={showAllScores}
                 currentPageNumber={currentPageNumber}
-                maxPossiblePages={maxPossiblePages}
                 setMaxPossiblePages={setMaxPossiblePages}
                 maxResultsPerPage={maxResultsPerPage}
             />

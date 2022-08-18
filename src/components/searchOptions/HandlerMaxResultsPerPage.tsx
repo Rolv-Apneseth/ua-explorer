@@ -2,20 +2,17 @@ import React from "react"
 import { possibleUrbanAreasPerPage } from "../../utils/constants"
 
 interface Props {
-    setCurrentPageNumber: Function
     maxResultsPerPage: string
     setMaxResultsPerPage: Function
 }
 
 export const HandlerMaxResultsPerPage = ({
-    setCurrentPageNumber,
     maxResultsPerPage,
     setMaxResultsPerPage,
 }: Props) => {
     const handleChangeTotalUrbanAreasToShow = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        setCurrentPageNumber(0)
         setMaxResultsPerPage(event.target.value)
     }
 
