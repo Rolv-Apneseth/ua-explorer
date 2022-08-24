@@ -18,7 +18,9 @@ export const HandlerFilterContinent = ({
 
     return (
         <section>
-            <label htmlFor="filter-urban-area-continent">Continent: </label>
+            <label hidden htmlFor="filter-urban-area-continent">
+                Continent:
+            </label>
             <select
                 name="filter-urban-area-continent"
                 value={filterContinent}

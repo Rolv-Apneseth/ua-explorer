@@ -20,9 +20,13 @@
 
     --clr-black: hsl(0, 0%, 10%);
     --clr-white: hsl(0, 0%, 99%);
+    --clr-grey-light: hsl(0, 0%, 88%);
 
     --clr-text: hsl(0, 0%, 75%);
     --clr-text-important: var(--clr-white);
+    --clr-input: var(--clr-grey-light);
+    --clr-input-hover: var(--clr-white);
+    --clr-input-text: var(--clr-black);
 
     // Score colours
     --clr-scores-lightness: 50%;

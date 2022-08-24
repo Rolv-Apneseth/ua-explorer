@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
   margin: 0;
@@ -54,8 +55,28 @@ textarea:focus {
   outline: 0;
 }
 
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+:root {
+  --font-family-base: "roboto", sans-serif;
+}
+
+select,
+button,
 html {
-  font-family: "roboto", sans-serif;
+  font-family: var(--font-family-base);
+}
+
+body {
+  font-size: var(--font-size-m);
+}
+
+html {
   scroll-behavior: smooth;
 }
 html p {
@@ -63,7 +84,6 @@ html p {
 }
 
 body {
-  font-size: var(--font-size-m);
   background-color: var(--clr-main);
   color: var(--clr-text);
   min-height: 100vh;
@@ -122,8 +142,12 @@ img {
   --clr-tertiary: hsl(310, 70%, 40%);
   --clr-black: hsl(0, 0%, 10%);
   --clr-white: hsl(0, 0%, 99%);
+  --clr-grey-light: hsl(0, 0%, 88%);
   --clr-text: hsl(0, 0%, 75%);
   --clr-text-important: var(--clr-white);
+  --clr-input: var(--clr-grey-light);
+  --clr-input-hover: var(--clr-white);
+  --clr-input-text: var(--clr-black);
   --clr-scores-lightness: 50%;
   --clr-scores-saturation: 60%;
   --clr-score-bar-full: var(--clr-white);
@@ -361,6 +385,26 @@ footer a:hover::before {
   justify-content: center;
   align-items: center;
   margin: var(--space-l) 0;
+}
+
+i {
+  font-style: unset;
+}
+i::after {
+  display: block;
+  width: max-content;
+  transition: transform var(--animation-duration);
+}
+
+.icon-group {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.icon-find::after {
+  content: "⚲";
+  transform: rotate(-45deg) scale(1.15);
 }
 
 /*# sourceMappingURL=global.css.map */

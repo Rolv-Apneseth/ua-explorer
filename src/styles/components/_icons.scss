@@ -1,0 +1,22 @@
+i {
+    font-style: unset;
+
+    &::after {
+        display: block;
+        width: max-content;
+        transition: transform var(--animation-duration);
+    }
+}
+
+.icon-group {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: center;
+}
+
+.icon-find {
+    &::after {
+        content: "\26B2";
+        transform: rotate(-45deg) scale(1.15);
+    }
+}

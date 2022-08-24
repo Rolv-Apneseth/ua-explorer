@@ -1,7 +1,6 @@
 @use "../abstracts/media_queries" as *;
 
 html {
-    font-family: "roboto", sans-serif;
     scroll-behavior: smooth;
 
     p {
@@ -10,7 +9,6 @@ html {
 }
 
 body {
-    font-size: var(--font-size-m);
     background-color: var(--clr-main);
     color: var(--clr-text);
     min-height: 100vh;

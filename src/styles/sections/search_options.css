@@ -1,0 +1,85 @@
+.search-options {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-m);
+}
+.search-options .icon-group,
+.search-options select,
+.search-options button {
+  padding: var(--space-xs);
+  font-weight: 500;
+  border: 1px solid var(--clr-input);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: var(--font-size-s);
+  color: var(--clr-input-text);
+}
+.search-options select,
+.search-options button {
+  cursor: pointer;
+  background-color: var(--clr-input);
+  transition-property: background-color;
+  transition-duration: var(--animation-duration);
+}
+.search-options select:hover,
+.search-options button:hover {
+  background-color: var(--clr-input-hover);
+}
+.search-options select {
+  width: max-content;
+  height: max-content;
+  outline: none;
+}
+.search-options select option:hover {
+  background-color: white;
+}
+.search-options label {
+  color: var(--clr-text-important);
+}
+.search-options button.disabled {
+  cursor: not-allowed;
+}
+.search-options .icon-group {
+  background-color: var(--clr-input);
+  width: 12rem;
+  transition-property: background-color;
+  transition-duration: var(--animation-duration);
+}
+.search-options .icon-group input[type=text] {
+  color: var(--clr-input-text);
+}
+.search-options .icon-group:hover {
+  background-color: var(--clr-input-hover);
+}
+.search-options .icon-group:focus-within {
+  background-color: var(--clr-input-hover);
+}
+.search-options .icon-group:focus-within .icon-find::after {
+  transform: rotate(-405deg) scale(0.9);
+}
+.search-options .base-options {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1/3;
+  gap: var(--space-s);
+}
+.search-options .base-options > section {
+  min-width: max-content;
+}
+.search-options .page-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  align-items: flex-end;
+  gap: var(--space-s);
+}
+.search-options .page-options section {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+/*# sourceMappingURL=search_options.css.map */

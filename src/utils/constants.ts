@@ -1,5 +1,5 @@
 export const possibleContinentOptions = [
-    "Any",
+    "Any Continent",
     "Africa",
     "Asia",
     "Europe",

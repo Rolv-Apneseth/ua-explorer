@@ -15,7 +15,9 @@ export const HandlerSortBy = ({ sortBy, setSortBy }: Props) => {
 
     return (
         <section>
-            <label htmlFor="sort-urban-areas">Sort by: </label>
+            <label hidden htmlFor="sort-urban-areas">
+                Sort by:
+            </label>
             <select
                 name="sort-urban-areas"
                 value={sortBy}

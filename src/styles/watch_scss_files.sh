@@ -6,6 +6,7 @@ SCSS_FILES=(
     "global"
     "sections/card_city"
     "sections/cards_section"
+    "sections/search_options"
 )
 
 for scss_file in "${SCSS_FILES[@]}"

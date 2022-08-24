@@ -1,7 +1,8 @@
 import { UrbanArea, FetchedUrbanArea } from "./apiData"
 
 const baseApiUrl = "https://api.teleport.org/api/"
-export const apiUrlUrbanAreas = `${baseApiUrl}urban_areas/?embed=ua:item/ua:images&embed=ua:item/ua:salaries&embed=ua:item/ua:details&embed=ua:item/ua:scores`
+export const apiUrlUrbanAreas = `${baseApiUrl}urban_areas/?embed=ua:item/ua:images&embed=ua:item/ua:salaries&embed=ua:item/ua:scores`
+// const apiURLUrbanAreas = `${baseApiUrl}urban_areas/?embed=ua:item/ua:images&embed=ua:item/ua:salaries&embed=ua:item/ua:details&embed=ua:item/ua:scores`
 
 export const fetchUrbanAreas = () => {
     return fetch(apiUrlUrbanAreas)

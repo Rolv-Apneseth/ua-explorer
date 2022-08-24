@@ -1,5 +1,3 @@
-import { possibleDetailLabels } from "./constants"
-
 // SAMPLE RESPONSE
 // _embedded
 //    ua:item
@@ -8,17 +6,9 @@ import { possibleDetailLabels } from "./constants"
 //        full_name
 //        name
 //        _embedded
-//              ua:details
 //              ua:scores
-//             ua:images
-//                 links
-//                     ....
-//                 photo
-//                     0
-//                         image
-//                             mobile
-//                             web
-//
+//              ua:images
+
 // INTERFACES / TYPES
 export interface FetchedUrbanArea {
     _embedded: UrbanAreaEmbeddedCategories
@@ -34,25 +24,25 @@ export interface FetchedUrbanArea {
 interface UrbanAreaEmbeddedCategories {
     "ua:images": UrbanAreaImages
     "ua:scores": UrbanAreaScores
-    "ua:details": UrbanAreaDetails
+    // "ua:details": UrbanAreaDetails
 }
 // ------------------- DETAILS --------------------
-interface UrbanAreaDetails {
-    categories: Array<UrbanAreaDetailCategories>
-}
-interface UrbanAreaDetailCategories {
-    label: string
-    data: Array<UrbanAreaDetailData>
-}
-interface UrbanAreaDetailData {
-    type: string
-    label: string
-    float_value?: Number | string
-    int_value?: Number
-    percent_value?: Number
-    string_value?: string
-    currency_dollar_value?: Number
-}
+// interface UrbanAreaDetails {
+//     categories: Array<UrbanAreaDetailCategories>
+// }
+// interface UrbanAreaDetailCategories {
+//     label: string
+//     data: Array<UrbanAreaDetailData>
+// }
+// interface UrbanAreaDetailData {
+//     type: string
+//     label: string
+//     float_value?: Number | string
+//     int_value?: Number
+//     percent_value?: Number
+//     string_value?: string
+//     currency_dollar_value?: Number
+// }
 // ------------------- IMAGES ---------------------
 interface UrbanAreaImages {
     photos: Array<UrbanAreaImageInfo>
@@ -121,7 +111,7 @@ export class UrbanArea {
     overallScore: string
     scoreLabels: UrbanAreaScoresContainer
     // Details
-    detailLabels: Object
+    // detailLabels: Object
 
     constructor(fetchedUrbanArea: FetchedUrbanArea) {
         this.fetchedUrbanArea = fetchedUrbanArea
@@ -147,8 +137,8 @@ export class UrbanArea {
         this.updateScoreLabels()
 
         // DETAILS
-        this.detailLabels = {}
-        this.updateDetailLabels()
+        // this.detailLabels = {}
+        // this.updateDetailLabels()
     }
 
     updateScoreLabels = () => {
@@ -175,46 +165,46 @@ export class UrbanArea {
         return backupResult
     }
 
-    updateDetailLabels = () => {
-        type detailLabelsKey = keyof typeof this.detailLabels
-        const detailsCategory = this.embeddedCategories["ua:details"].categories
-
-        for (
-            let categoryIndex: number = 0;
-            categoryIndex < detailsCategory.length;
-            categoryIndex++
-        ) {
-            for (
-                let dataIndex: number = 0;
-                dataIndex < detailsCategory[categoryIndex].data.length;
-                dataIndex++
-            ) {
-                const detailData =
-                    detailsCategory[categoryIndex].data[dataIndex]
-
-                type detailDataKey = keyof typeof detailData
-
-                const detailLabel = detailData.label as detailLabelsKey
-
-                if (possibleDetailLabels.includes(detailData.label)) {
-                    let valueProperty =
-                        `${detailData.type}_value` as detailDataKey
-
-                    if (valueProperty in detailData) {
-                        this.detailLabels[detailLabel] =
-                            detailData[valueProperty]
-                    }
-                }
-            }
-        }
-    }
-
-    getDetailValueByLabel = (label: string) => {
-        type detailLabelsKey = keyof typeof this.detailLabels
-        const labelKey = label as detailLabelsKey
-
-        return this.detailLabels.hasOwnProperty(labelKey)
-            ? this.detailLabels[labelKey]
-            : "N/A"
-    }
+    // updateDetailLabels = () => {
+    //     type detailLabelsKey = keyof typeof this.detailLabels
+    //     const detailsCategory = this.embeddedCategories["ua:details"].categories
+    //
+    //     for (
+    //         let categoryIndex: number = 0;
+    //         categoryIndex < detailsCategory.length;
+    //         categoryIndex++
+    //     ) {
+    //         for (
+    //             let dataIndex: number = 0;
+    //             dataIndex < detailsCategory[categoryIndex].data.length;
+    //             dataIndex++
+    //         ) {
+    //             const detailData =
+    //                 detailsCategory[categoryIndex].data[dataIndex]
+    //
+    //             type detailDataKey = keyof typeof detailData
+    //
+    //             const detailLabel = detailData.label as detailLabelsKey
+    //
+    //             if (possibleDetailLabels.includes(detailData.label)) {
+    //                 let valueProperty =
+    //                     `${detailData.type}_value` as detailDataKey
+    //
+    //                 if (valueProperty in detailData) {
+    //                     this.detailLabels[detailLabel] =
+    //                         detailData[valueProperty]
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    //
+    // getDetailValueByLabel = (label: string) => {
+    //     type detailLabelsKey = keyof typeof this.detailLabels
+    //     const labelKey = label as detailLabelsKey
+    //
+    //     return this.detailLabels.hasOwnProperty(labelKey)
+    //         ? this.detailLabels[labelKey]
+    //         : "N/A"
+    // }
 }

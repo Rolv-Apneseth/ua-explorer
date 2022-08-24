@@ -1,11 +1,10 @@
 import React from "react"
-import "../../styles/sections/card_city.css"
+import "../../styles/sections/search_options.css"
 import { HandlerFilterContinent } from "./HandlerFilterContinent"
 import { HandlerFilterName } from "./HandlerFilterName"
-import { HandlerMaxResultsPerPage } from "./HandlerMaxResultsPerPage"
-import { HandlerPageNumber } from "./HandlerPageNumber"
 import { HandlerShowAllScores } from "./HandlerShowAllScores"
 import { HandlerSortBy } from "./HandlerSortBy"
+import { PageOptions } from "./PageOptions"
 
 interface Props {
     isLoading: boolean
@@ -46,36 +45,36 @@ export const SearchOptions = ({
     }, [filterName, filterContinent, sortBy, maxResultsPerPage])
 
     return (
-        <form>
-            <fieldset disabled={isLoading}>
+        <form className="search-options">
+            <fieldset className="base-options" disabled={isLoading}>
+                <HandlerFilterName
+                    filterName={filterName}
+                    setFilterName={setFilterName}
+                />
                 <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
 
                 <HandlerFilterContinent
                     filterContinent={filterContinent}
                     setFilterContinent={setFilterContinent}
                 />
+            </fieldset>
 
-                <HandlerFilterName
-                    filterName={filterName}
-                    setFilterName={setFilterName}
-                />
-
-                <HandlerMaxResultsPerPage
-                    maxResultsPerPage={maxResultsPerPage}
-                    setMaxResultsPerPage={setMaxResultsPerPage}
-                />
-
-                <HandlerPageNumber
-                    currentPageNumber={currentPageNumber}
-                    setCurrentPageNumber={setCurrentPageNumber}
-                    maxPossiblePages={maxPossiblePages}
-                />
-
+            <fieldset className="other-options" disabled={isLoading}>
                 <HandlerShowAllScores
+                    isLoading={isLoading}
                     showAllScores={showAllScores}
                     setShowAllScores={setShowAllScores}
                 />
             </fieldset>
+
+            <PageOptions
+                isLoading={isLoading}
+                currentPageNumber={currentPageNumber}
+                setCurrentPageNumber={setCurrentPageNumber}
+                maxPossiblePages={maxPossiblePages}
+                maxResultsPerPage={maxResultsPerPage}
+                setMaxResultsPerPage={setMaxResultsPerPage}
+            />
         </form>
     )
 }

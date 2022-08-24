@@ -13,14 +13,20 @@ export const HandlerFilterName = ({ filterName, setFilterName }: Props) => {
     }
 
     return (
-        <section>
-            <label htmlFor="filter-urban-area-name">Filter by name: </label>
-            <input
-                name="filter-urban-area-name"
-                type="text"
-                value={filterName}
-                onChange={handleChangeFilterName}
-            />
+        <section className="search-options-filter-name">
+            <label htmlFor="filter-urban-area-name" hidden>
+                Filter by name:
+            </label>
+            <section className="icon-group">
+                <i className="icon-find"></i>
+                <input
+                    name="filter-urban-area-name"
+                    type="text"
+                    placeholder="Search"
+                    value={filterName}
+                    onChange={handleChangeFilterName}
+                />
+            </section>
         </section>
     )
 }

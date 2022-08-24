@@ -1,0 +1,13 @@
+:root {
+    --font-family-base: "roboto", sans-serif;
+}
+
+select,
+button,
+html {
+    font-family: var(--font-family-base);
+}
+
+body {
+    font-size: var(--font-size-m);
+}
