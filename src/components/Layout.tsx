@@ -8,6 +8,7 @@ import Footer from "./Footer"
 import "../styles/global.css"
 
 interface Props {
+    pageHeading: string
     children?: React.ReactNode
 }
 
@@ -49,6 +50,7 @@ const Layout: React.FC<Props> = props => {
             <Head />
 
             <Header
+                pageHeading={props.pageHeading}
                 active={topbarActive}
                 setActive={setTopbarActive}
                 scrollingUp={scrollingUp}

@@ -11,6 +11,7 @@ interface Props {
     isDarkMode: boolean
     setIsDarkMode: Function
     setTheme: Function
+    pageHeading: string
 }
 
 const Header: React.FC<Props> = props => {
@@ -24,6 +25,7 @@ const Header: React.FC<Props> = props => {
                 props.scrollingUp ? " appear" : ""
             }${props.atStartingPosition ? " initial-state" : ""}`}
         >
+            <h1 className="page-heading">{props.pageHeading}</h1>
             <nav>
                 <ul>
                     <li>
@@ -31,11 +33,6 @@ const Header: React.FC<Props> = props => {
                             Home
                         </Link>
                     </li>
-                    {/* <li> */}
-                    {/*     <Link onClick={deactivate} to="/#contact"> */}
-                    {/*         Contact */}
-                    {/*     </Link> */}
-                    {/* </li> */}
                     <li>
                         <a
                             onClick={deactivate}

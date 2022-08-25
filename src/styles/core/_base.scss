@@ -21,24 +21,12 @@ main {
     position: relative;
     transition: filter var(--animation-duration);
     margin: 0 var(--site-margins);
-    padding: var(--space-l) 0;
+    max-width: var(--site-content-width);
+    padding: var(--space-xl) 0;
     overflow-x: visible;
 
     &.blur {
         filter: blur(0.75rem) brightness(45%);
-    }
-
-    .page-heading {
-        color: var(--clr-text-important);
-        margin-bottom: var(--space-l);
-    }
-
-    @include desktop-medium-up {
-        width: 65rem;
-        margin: 0 auto;
-    }
-    @include desktop-large-up {
-        width: 80rem;
     }
 }
 

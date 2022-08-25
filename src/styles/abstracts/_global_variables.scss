@@ -52,9 +52,9 @@
     // FONT SIZES
     --font-size-s: clamp(1rem, 2vw, 1.2rem);
     --font-size-m: clamp(1.3rem, 3vw, 1.4rem);
-    --font-size-ml: clamp(1.7rem, 5.5vw, 1.8rem);
-    --font-size-l: clamp(2rem, 7vw, 2.5rem);
-    --font-size-xl: clamp(2.5rem, 10vw, 5rem);
+    --font-size-ml: clamp(1.5rem, 6vw, 2.1rem);
+    --font-size-l: clamp(2.3rem, 2.5vw, 2.5rem);
+    --font-size-xl: clamp(2.5rem, 2vw, 5rem);
 
     // MEASUREMENTS
     --thickness-s: 1px;
@@ -72,6 +72,7 @@
     --space-xl: 7.5rem;
 
     --site-margins: var(--space-sm);
+    --site-content-width: 100%;
 
     // ANIMATIONS
     --transition-duration: 150ms;
@@ -94,7 +95,11 @@
     }
 
     @include desktop-small-up {
-        --site-margins: 15%;
+        --site-content-width: 50rem;
+        --site-margins: calc((100% - var(--site-content-width)) / 2);
+    }
+    @include desktop-large-up {
+        --site-content-width: 80rem;
     }
 }
 

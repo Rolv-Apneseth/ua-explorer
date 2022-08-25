@@ -40,9 +40,7 @@ const Index = () => {
     }, [sortBy])
 
     return (
-        <Layout>
-            <h1 className="page-heading">Urban Area Explorer</h1>
-
+        <Layout pageHeading="Urban Area Explorer">
             <SearchOptions
                 isLoading={isLoading}
                 sortBy={sortBy}
