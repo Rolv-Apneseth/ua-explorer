@@ -51,12 +51,11 @@ export const SearchOptions = ({
                     filterName={filterName}
                     setFilterName={setFilterName}
                 />
-                <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
-
                 <HandlerFilterContinent
                     filterContinent={filterContinent}
                     setFilterContinent={setFilterContinent}
                 />
+                <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
             </fieldset>
 
             <fieldset className="other-options" disabled={isLoading}>
