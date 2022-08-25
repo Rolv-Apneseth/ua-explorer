@@ -37,9 +37,6 @@
 .search-options label {
   color: var(--clr-text-important);
 }
-.search-options button.disabled {
-  cursor: not-allowed;
-}
 .search-options .icon-group {
   background-color: var(--clr-input);
   width: 12rem;

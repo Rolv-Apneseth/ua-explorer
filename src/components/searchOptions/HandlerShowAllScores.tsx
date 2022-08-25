@@ -19,16 +19,12 @@ export const HandlerShowAllScores = ({
     }
 
     return (
-        <section>
-            <button
-                disabled={isLoading}
-                onClick={onClickShowAllScores}
-                className={`${showAllScores ? "pressed" : ""} ${
-                    isLoading ? "disabled" : ""
-                }`}
-            >
-                Show All Scores
-            </button>
-        </section>
+        <button
+            disabled={isLoading}
+            onClick={onClickShowAllScores}
+            className={showAllScores ? "pressed" : ""}
+        >
+            Show All Scores
+        </button>
     )
 }
