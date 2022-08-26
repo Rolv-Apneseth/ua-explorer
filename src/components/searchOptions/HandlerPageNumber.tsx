@@ -1,5 +1,6 @@
 import React from "react"
 import { range } from "underscore"
+import { getJointStringForUID } from "../../utils/helpers"
 
 interface Props {
     currentPageNumber: number
@@ -18,10 +19,14 @@ export const HandlerPageNumber = ({
         setCurrentPageNumber(event.target.value)
     }
 
+    const getKey = (pageNumber: number) =>
+        getJointStringForUID("HandlerPageNumber", pageNumber.toString())
+
     return (
         <section>
             <label htmlFor="current-page">Page</label>
             <select
+                key={getKey(currentPageNumber)}
                 name="total-urban-areas-to-show"
                 value={currentPageNumber}
                 onChange={handleChangeCurrentPage}
@@ -29,7 +34,9 @@ export const HandlerPageNumber = ({
                 <option value={0}>1</option>
 
                 {range(1, maxPossiblePages).map(option => (
-                    <option value={option}>{option + 1}</option>
+                    <option key={getKey(option)} value={option}>
+                        {option + 1}
+                    </option>
                 ))}
             </select>
         </section>

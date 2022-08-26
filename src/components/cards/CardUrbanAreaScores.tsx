@@ -1,7 +1,7 @@
 import React from "react"
 import { UrbanArea, UrbanAreaScore } from "../../utils/apiData"
 import { possibleScoreLabels } from "../../utils/constants"
-import { sortScoreLabelsArray } from "../../utils/helpers"
+import { getJointStringForUID, sortScoreLabelsArray } from "../../utils/helpers"
 import { CardUrbanAreaScore } from "./CardUrbanAreaScore"
 
 interface Props {
@@ -19,11 +19,14 @@ export const CardUrbanAreaScores = ({
         sortScoreLabelsArray
     )
 
+    const getKey = (ua_id: string, scoreLabel: string) =>
+        getJointStringForUID(ua_id, "CardUrbanAreaScore", scoreLabel)
+
     return (
         <article className="urban-area-scores">
             {topStatistic && possibleScoreLabels.includes(topStatistic) && (
                 <CardUrbanAreaScore
-                    urbanArea={urbanArea}
+                    key={getKey(urbanArea.ua_id, topStatistic)}
                     label={topStatistic}
                     scoreObject={urbanArea.getScoreValueByLabel(topStatistic)}
                 />
@@ -46,7 +49,7 @@ export const CardUrbanAreaScores = ({
 
                         return (
                             <CardUrbanAreaScore
-                                urbanArea={urbanArea}
+                                key={getKey(urbanArea.ua_id, label)}
                                 label={label}
                                 scoreObject={scoreObject}
                             />

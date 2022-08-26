@@ -43,3 +43,5 @@ export const getScoreColour = (score: number, outOf: number) => {
 
     return `var(--clr-${possibleColourCSSVariableNames[result]})`
 }
+
+export const getJointStringForUID = (...args: Array<string>) => args.join("-")

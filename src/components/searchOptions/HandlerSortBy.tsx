@@ -1,5 +1,6 @@
 import React from "react"
 import { sortByOptions } from "../../utils/constants"
+import { getJointStringForUID } from "../../utils/helpers"
 
 interface Props {
     sortBy: string
@@ -13,6 +14,9 @@ export const HandlerSortBy = ({ sortBy, setSortBy }: Props) => {
         setSortBy(event.target.value)
     }
 
+    const getKey = (sortByValue: string) =>
+        getJointStringForUID("HandlerSortBy", sortByValue)
+
     return (
         <section>
             <label hidden htmlFor="sort-urban-areas">
@@ -24,7 +28,9 @@ export const HandlerSortBy = ({ sortBy, setSortBy }: Props) => {
                 onChange={handleChangeSortBy}
             >
                 {sortByOptions.map(option => (
-                    <option value={option}>{option}</option>
+                    <option key={getKey(option)} value={option}>
+                        {option}
+                    </option>
                 ))}
             </select>
         </section>

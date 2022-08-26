@@ -1,5 +1,6 @@
 import React from "react"
 import { possibleContinentOptions } from "../../utils/constants"
+import { getJointStringForUID } from "../../utils/helpers"
 
 interface Props {
     filterContinent: string
@@ -16,6 +17,9 @@ export const HandlerFilterContinent = ({
         setFilterContinent(event.target.value)
     }
 
+    const getKey = (continentName: string) =>
+        getJointStringForUID("HandlerFilterContinent", continentName)
+
     return (
         <section>
             <label hidden htmlFor="filter-urban-area-continent">
@@ -27,7 +31,9 @@ export const HandlerFilterContinent = ({
                 onChange={handleChangeFilterContinent}
             >
                 {possibleContinentOptions.map(option => (
-                    <option value={option}>{option}</option>
+                    <option key={getKey(option)} value={option}>
+                        {option}
+                    </option>
                 ))}
             </select>
         </section>
