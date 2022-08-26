@@ -72,6 +72,14 @@
         & > section {
             min-width: max-content;
         }
+
+        button {
+            &.pressed {
+                .icon-down-arrow::after {
+                    transform: rotate(-540deg);
+                }
+            }
+        }
     }
 
     .page-options {

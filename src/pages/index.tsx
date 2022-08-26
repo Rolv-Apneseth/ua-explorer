@@ -15,6 +15,8 @@ const Index = () => {
     const [data, setData] = React.useState<UrbanArea[]>([])
     const [isLoading, setIsLoading] = React.useState(true)
     const [sortBy, setSortBy] = React.useState(defaultSortBy)
+    const [isSortOrderAscending, setIsSortOrderAscending] =
+        React.useState(false)
     const [filterContinent, setFilterContinent] = React.useState(
         defaultFilterByContinent
     )
@@ -45,6 +47,8 @@ const Index = () => {
                 isLoading={isLoading}
                 sortBy={sortBy}
                 setSortBy={setSortBy}
+                isSortOrderAscending={isSortOrderAscending}
+                setIsSortOrderAscending={setIsSortOrderAscending}
                 filterContinent={filterContinent}
                 setFilterContinent={setFilterContinent}
                 filterName={filterName}
@@ -62,6 +66,7 @@ const Index = () => {
                 data={data}
                 isLoading={isLoading}
                 sortBy={sortBy}
+                isSortOrderAscending={isSortOrderAscending}
                 filterContinent={filterContinent}
                 filterName={filterName}
                 showAllScores={showAllScores}

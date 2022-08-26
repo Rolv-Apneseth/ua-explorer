@@ -4,12 +4,15 @@ import { HandlerFilterContinent } from "./HandlerFilterContinent"
 import { HandlerFilterName } from "./HandlerFilterName"
 import { HandlerShowAllScores } from "./HandlerShowAllScores"
 import { HandlerSortBy } from "./HandlerSortBy"
+import { HandlerSortOrder } from "./HandlerSortOrder"
 import { PageOptions } from "./PageOptions"
 
 interface Props {
     isLoading: boolean
     sortBy: string
     setSortBy: Function
+    isSortOrderAscending: boolean
+    setIsSortOrderAscending: Function
     filterContinent: string
     setFilterContinent: Function
     filterName: string
@@ -27,6 +30,8 @@ export const SearchOptions = ({
     isLoading,
     sortBy,
     setSortBy,
+    isSortOrderAscending,
+    setIsSortOrderAscending,
     filterContinent,
     setFilterContinent,
     filterName,
@@ -42,7 +47,13 @@ export const SearchOptions = ({
     // Reset page number when any of the filters/sorts change
     React.useEffect(() => {
         setCurrentPageNumber(0)
-    }, [filterName, filterContinent, sortBy, maxResultsPerPage])
+    }, [
+        filterName,
+        filterContinent,
+        sortBy,
+        maxResultsPerPage,
+        isSortOrderAscending,
+    ])
 
     return (
         <form className="search-options">
@@ -51,11 +62,19 @@ export const SearchOptions = ({
                     filterName={filterName}
                     setFilterName={setFilterName}
                 />
+
                 <HandlerFilterContinent
                     filterContinent={filterContinent}
                     setFilterContinent={setFilterContinent}
                 />
+
                 <HandlerSortBy sortBy={sortBy} setSortBy={setSortBy} />
+
+                <HandlerSortOrder
+                    isLoading={isLoading}
+                    isSortOrderAscending={isSortOrderAscending}
+                    setIsSortOrderAscending={setIsSortOrderAscending}
+                />
             </fieldset>
 
             <fieldset className="other-options" disabled={isLoading}>

@@ -15,6 +15,7 @@ interface Props {
     data: Array<UrbanArea>
     isLoading: boolean
     sortBy: string
+    isSortOrderAscending: boolean
     filterContinent: string
     filterName: string
     showAllScores: boolean
@@ -27,6 +28,7 @@ export const CardsSection = ({
     data,
     isLoading,
     sortBy,
+    isSortOrderAscending,
     filterContinent,
     filterName,
     showAllScores,
@@ -84,11 +86,23 @@ export const CardsSection = ({
             )
         }
 
+        // ASCENDING/DESCENDING ORDER
+        if (isSortOrderAscending) {
+            newDisplayData.reverse()
+        }
+
         setMaxPossiblePages(
             Math.ceil(newDisplayData.length / parseInt(maxResultsPerPage))
         )
         setDisplayData(newDisplayData)
-    }, [sortBy, filterContinent, filterName, data, maxResultsPerPage])
+    }, [
+        sortBy,
+        filterContinent,
+        filterName,
+        data,
+        maxResultsPerPage,
+        isSortOrderAscending,
+    ])
 
     const getSliceForCurrentlyDisplayedData = () => {
         const totalUrbanAreasAvailable = displayData.length

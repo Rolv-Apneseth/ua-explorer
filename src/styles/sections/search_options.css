@@ -64,6 +64,9 @@
 .search-options .base-options > section {
   min-width: max-content;
 }
+.search-options .base-options button.pressed .icon-down-arrow::after {
+  transform: rotate(-540deg);
+}
 .search-options .page-options {
   display: flex;
   flex-wrap: wrap;

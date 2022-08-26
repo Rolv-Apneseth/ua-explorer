@@ -20,3 +20,9 @@ i {
         transform: rotate(-45deg) scale(1.15);
     }
 }
+
+.icon-down-arrow {
+    &::after {
+        content: "\21CA";
+    }
+}
