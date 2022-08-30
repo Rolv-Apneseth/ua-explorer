@@ -1,5 +1,5 @@
 import React from "react"
-import { AnimateSharedLayout } from "framer-motion"
+import { LayoutGroup } from "framer-motion"
 import { UrbanArea } from "../../utils/apiData"
 import { LoadingWheel } from "../LoadingWheel"
 import { CardUrbanArea } from "./CardUrbanArea"
@@ -120,7 +120,7 @@ export const CardsSection = ({
 
     return (
         <section className="cards-section">
-            <AnimateSharedLayout>
+            <LayoutGroup>
                 {getSliceForCurrentlyDisplayedData().map(
                     (urbanArea: UrbanArea) => {
                         // FILTER URBAN AREAS
@@ -145,7 +145,7 @@ export const CardsSection = ({
                         }
                     }
                 )}
-            </AnimateSharedLayout>
+            </LayoutGroup>
         </section>
     )
 }

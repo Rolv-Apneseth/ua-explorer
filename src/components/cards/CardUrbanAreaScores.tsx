@@ -1,4 +1,5 @@
 import React from "react"
+import { motion } from "framer-motion"
 import { UrbanArea, UrbanAreaScore } from "../../utils/apiData"
 import { possibleScoreLabels } from "../../utils/constants"
 import { getJointStringForUID, sortScoreLabelsArray } from "../../utils/helpers"
@@ -23,12 +24,13 @@ export const CardUrbanAreaScores = ({
         getJointStringForUID(ua_id, "CardUrbanAreaScore", scoreLabel)
 
     return (
-        <article className="urban-area-scores">
+        <motion.article layout className="urban-area-scores">
             {topStatistic && possibleScoreLabels.includes(topStatistic) && (
                 <CardUrbanAreaScore
                     key={getKey(urbanArea.ua_id, topStatistic)}
                     label={topStatistic}
                     scoreObject={urbanArea.getScoreValueByLabel(topStatistic)}
+                    isTopStatistic={true}
                 />
             )}
 
@@ -52,10 +54,11 @@ export const CardUrbanAreaScores = ({
                                 key={getKey(urbanArea.ua_id, label)}
                                 label={label}
                                 scoreObject={scoreObject}
+                                isTopStatistic={false}
                             />
                         )
                     }
                 )}
-        </article>
+        </motion.article>
     )
 }

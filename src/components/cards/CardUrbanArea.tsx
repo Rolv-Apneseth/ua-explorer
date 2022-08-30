@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { LayoutGroup, motion } from "framer-motion"
 import {
     defaultAnimationChangeInPosition,
     defaultAnimationDurationInSeconds,
@@ -30,36 +30,38 @@ export const CardUrbanArea = ({
             className="card-city"
         >
             <section className="urban-area-main">
-                <motion.h3 layout>{urbanArea.fullName}</motion.h3>
+                <LayoutGroup>
+                    <motion.h3 layout>{urbanArea.fullName}</motion.h3>
 
-                <motion.img
-                    layout
-                    src={urbanArea.imageWeb}
-                    alt={urbanArea.name}
-                />
+                    <motion.img
+                        layout
+                        src={urbanArea.imageWeb}
+                        alt={urbanArea.name}
+                    />
 
-                <motion.h4 layout>
-                    Overall Score:&nbsp;
-                    <span
-                        style={{
-                            color: getScoreColour(
-                                parseFloat(urbanArea.overallScore),
-                                100
-                            ),
-                        }}
-                    >
-                        {urbanArea.overallScore}
-                    </span>
-                </motion.h4>
-                <CardUrbanAreaScores
-                    urbanArea={urbanArea}
-                    topStatistic={topStatistic}
-                    showAllScores={showAllScores}
-                />
-                <motion.div
-                    layout
-                    dangerouslySetInnerHTML={{ __html: urbanArea.summary }}
-                />
+                    <motion.h4 layout>
+                        Overall Score:&nbsp;
+                        <span
+                            style={{
+                                color: getScoreColour(
+                                    parseFloat(urbanArea.overallScore),
+                                    100
+                                ),
+                            }}
+                        >
+                            {urbanArea.overallScore}
+                        </span>
+                    </motion.h4>
+                    <CardUrbanAreaScores
+                        urbanArea={urbanArea}
+                        topStatistic={topStatistic}
+                        showAllScores={showAllScores}
+                    />
+                    <motion.div
+                        layout
+                        dangerouslySetInnerHTML={{ __html: urbanArea.summary }}
+                    />
+                </LayoutGroup>
             </section>
 
             {/* DANGEROUS SET HTML -------------------------------------------*/}
