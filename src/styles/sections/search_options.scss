@@ -4,6 +4,10 @@
     gap: var(--space-sm);
     margin-bottom: var(--space-m);
 
+    &.disabled {
+        opacity: 0.7;
+    }
+
     .icon-group,
     select,
     button {

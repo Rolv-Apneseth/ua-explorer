@@ -56,7 +56,7 @@ export const SearchOptions = ({
     ])
 
     return (
-        <form className="search-options">
+        <form className={`search-options ${isLoading ? "disabled" : ""}`}>
             <fieldset className="base-options" disabled={isLoading}>
                 <HandlerFilterName
                     filterName={filterName}

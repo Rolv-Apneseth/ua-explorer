@@ -4,6 +4,9 @@
   gap: var(--space-sm);
   margin-bottom: var(--space-m);
 }
+.search-options.disabled {
+  opacity: 0.7;
+}
 .search-options .icon-group,
 .search-options select,
 .search-options button {
