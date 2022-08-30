@@ -29,17 +29,19 @@ export const CardUrbanArea = ({
             transition={{ duration: defaultAnimationDurationInSeconds }}
             className="card-city"
         >
-            <section className="urban-area-main">
-                <LayoutGroup>
-                    <motion.h3 layout>{urbanArea.fullName}</motion.h3>
+            <LayoutGroup id="urbanArea">
+                <section className="urban-area-main">
+                    <motion.h3 layout="position">
+                        {urbanArea.fullName}
+                    </motion.h3>
 
                     <motion.img
-                        layout
+                        layout="position"
                         src={urbanArea.imageWeb}
                         alt={urbanArea.name}
                     />
 
-                    <motion.h4 layout>
+                    <motion.h4 layout="position">
                         Overall Score:&nbsp;
                         <span
                             style={{
@@ -58,36 +60,37 @@ export const CardUrbanArea = ({
                         showAllScores={showAllScores}
                     />
                     <motion.div
-                        layout
+                        layout="position"
                         dangerouslySetInnerHTML={{ __html: urbanArea.summary }}
                     />
-                </LayoutGroup>
-            </section>
+                </section>
 
-            {/* DANGEROUS SET HTML -------------------------------------------*/}
-            {/* Completely trusting the developers of the Teleport API with this one */}
-            {/* ------------------------------------------------------------- */}
+                {/* DANGEROUS SET HTML -------------------------------------------*/}
+                {/* Completely trusting the developers of the Teleport API with this one */}
+                {/* ------------------------------------------------------------- */}
 
-            <section className="urban-area-buttons">
-                <motion.a
-                    layout
-                    className="urban-area-button"
-                    href={urbanArea.cityUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                <motion.section
+                    layout="position"
+                    className="urban-area-buttons"
                 >
-                    Teleport
-                </motion.a>
-                <motion.a
-                    layout
-                    className="urban-area-button"
-                    href={`https://en.wikipedia.org/wiki/${urbanArea.name}`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Wikipedia
-                </motion.a>
-            </section>
+                    <a
+                        className="urban-area-button"
+                        href={urbanArea.cityUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Teleport
+                    </a>
+                    <a
+                        className="urban-area-button"
+                        href={`https://en.wikipedia.org/wiki/${urbanArea.name}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Wikipedia
+                    </a>
+                </motion.section>
+            </LayoutGroup>
         </motion.article>
     )
 }
