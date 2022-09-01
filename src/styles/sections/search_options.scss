@@ -90,7 +90,7 @@
                 background-color: var(--clr-input-hover);
 
                 .icon-find::after {
-                    transform: rotate(-405deg) scale(0.9);
+                    transform: rotate(-405deg) scale(0.9) translateY(-10%);
                 }
             }
         }
@@ -128,6 +128,10 @@
             flex-direction: row-reverse;
             gap: var(--space-xs);
             align-items: center;
+        }
+
+        select {
+            width: 4.5rem;
         }
     }
 
