@@ -493,7 +493,7 @@ i::after {
 .icon-find::after {
   content: "⚲";
   font-weight: 700;
-  transform: rotate(-45deg) scale(1.15);
+  transform: rotate(-45deg) scale(1.15) translateY(-10%);
 }
 
 .icon-down-arrow::after {
