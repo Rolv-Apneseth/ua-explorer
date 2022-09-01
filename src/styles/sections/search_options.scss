@@ -15,8 +15,9 @@
 
 .search-options {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--space-sm);
+    // grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
+    gap: var(--space-s);
     margin-bottom: var(--space-m);
 
     // Statup animation, only runs once --------------------------
@@ -35,6 +36,7 @@
     select,
     button {
         padding: var(--space-xs);
+        height: 2.8rem;
         font-weight: 500;
         border: 1px solid var(--clr-input);
         border-radius: 0.5rem;
@@ -57,7 +59,6 @@
 
     select {
         width: max-content;
-        height: max-content;
         outline: none;
 
         option:hover {
@@ -69,23 +70,28 @@
         color: var(--clr-text-important);
     }
 
-    .icon-group {
-        background-color: var(--clr-input);
-        width: 12rem;
-        transition-property: background-color;
-        transition-duration: var(--animation-duration);
+    .search-options-filter-name {
+        width: 100%;
 
-        input[type="text"] {
-            color: var(--clr-input-text);
-        }
-        &:hover {
-            background-color: var(--clr-input-hover);
-        }
-        &:focus-within {
-            background-color: var(--clr-input-hover);
+        .icon-group {
+            background-color: var(--clr-input);
+            width: 100%;
+            transition-property: background-color;
+            transition-duration: var(--animation-duration);
 
-            .icon-find::after {
-                transform: rotate(-405deg) scale(0.9);
+            input[type="text"] {
+                color: var(--clr-input-text);
+                padding: 0;
+            }
+            &:hover {
+                background-color: var(--clr-input-hover);
+            }
+            &:focus-within {
+                background-color: var(--clr-input-hover);
+
+                .icon-find::after {
+                    transform: rotate(-405deg) scale(0.9);
+                }
             }
         }
     }
@@ -93,7 +99,6 @@
     .base-options {
         display: flex;
         flex-wrap: wrap;
-        grid-column: 1/3;
         gap: var(--space-s);
 
         & > section {
@@ -112,16 +117,44 @@
     .page-options {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-end;
         width: 100%;
         height: 100%;
         align-items: flex-end;
         gap: var(--space-s);
+        font-size: var(--font-size-s);
 
         section {
             display: flex;
+            flex-direction: row-reverse;
             gap: var(--space-xs);
             align-items: center;
+        }
+    }
+
+    @include small-device-up {
+        .base-options {
+            grid-column: 1/3;
+        }
+        .page-options {
+            justify-content: flex-end;
+        }
+        .search-options-filter-name {
+            width: 60%;
+        }
+    }
+    @include tablet-up {
+        .search-options-filter-name {
+            width: 65%;
+        }
+    }
+    // @include desktop-small-up {
+    //     .search-options-filter-name {
+    //         width: 50%;
+    //     }
+    // }
+    @include desktop-large-up {
+        .search-options-filter-name {
+            width: 12rem;
         }
     }
 }
