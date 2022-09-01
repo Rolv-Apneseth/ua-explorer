@@ -5,15 +5,22 @@
   height: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--clr-main);
+}
+.card-city br,
+.card-city i {
+  display: none;
+}
+.card-city h3 {
+  color: var(--clr-text-important);
+  font-weight: 600;
+}
+.card-city h4 {
+  font-weight: 600;
 }
 .card-city img {
   max-width: 100%;
   height: 200px;
   object-fit: cover;
-}
-.card-city h4 {
-  font-weight: bold;
 }
 .card-city .urban-area-main {
   display: flex;
@@ -30,7 +37,7 @@
 .card-city .urban-area-button {
   padding: var(--space-xs) var(--space-s);
   color: var(--clr-text-important);
-  border-bottom: solid 1px var(--clr-secondary);
+  border-bottom: solid 1px var(--clr-tertiary);
   outline: none;
   border-radius: var(--space-xs);
   transition-property: background-color, outline;
@@ -40,8 +47,8 @@
   max-height: var(--space-m);
 }
 .card-city .urban-area-button:hover {
-  background-color: hsla(var(--clr-secondary-h), var(--clr-secondary-s), var(--clr-secondary-l), 0.2);
-  outline: var(--clr-secondary) solid 1px;
+  background-color: hsla(var(--clr-tertiary-h), var(--clr-tertiary-s), var(--clr-tertiary-l), 0.1);
+  outline: var(--clr-tertiary) solid 1px;
 }
 .card-city .urban-area-scores {
   display: flex;
@@ -57,7 +64,7 @@
   margin-bottom: var(--space-xs);
 }
 .card-city .urban-area-scores .urban-area-score p {
-  font-weight: bold;
+  font-weight: 500;
   font-size: var(--font-size-s);
 }
 .card-city .urban-area-scores .urban-area-score .urban-area-score-number {

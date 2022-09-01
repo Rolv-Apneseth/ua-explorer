@@ -1,12 +1,17 @@
+@use "../abstracts/media_queries" as *;
+
 .cards-section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     align-items: flex-start;
+    grid-template-columns: 1fr;
     justify-content: center;
     gap: var(--space-ml);
 
-    br,
-    i {
-        display: none;
+    @include small-device-up {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop-small-up {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

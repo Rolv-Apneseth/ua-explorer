@@ -1,11 +1,28 @@
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes search_options_startup {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: var(--opacity-value);
+    }
+  }
+}
 .search-options {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-sm);
   margin-bottom: var(--space-m);
+  animation-name: search_options_startup;
+  animation-duration: calc(var(--animation-duration) * 1.75);
+  opacity: var(--opacity-value);
+  transition: opacity var(--animation-duration);
+  --opacity-value: 1;
 }
 .search-options.disabled {
-  opacity: 0.7;
+  --opacity-value: 0.7;
 }
 .search-options .icon-group,
 .search-options select,

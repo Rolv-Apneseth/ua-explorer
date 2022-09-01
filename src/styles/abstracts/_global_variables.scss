@@ -2,8 +2,8 @@
 
 :root {
     // COLOURS
-    --clr-main-h: 215;
-    --clr-main-s: 100%;
+    --clr-main-h: 235;
+    --clr-main-s: 80%;
     --clr-main-l: 9%;
     --clr-main: hsl(var(--clr-main-h), var(--clr-main-s), var(--clr-main-l));
 
@@ -16,11 +16,18 @@
         var(--clr-secondary-l)
     );
 
-    --clr-tertiary: hsl(310, 70%, 40%);
+    --clr-tertiary-h: 250;
+    --clr-tertiary-s: 100%;
+    --clr-tertiary-l: 80%;
+    --clr-tertiary: hsl(
+        var(--clr-tertiary-h),
+        var(--clr-tertiary-s),
+        var(--clr-tertiary-l)
+    );
 
     --clr-black: hsl(0, 0%, 10%);
     --clr-white: hsl(0, 0%, 99%);
-    --clr-grey-light: hsl(0, 0%, 88%);
+    --clr-grey-light: hsl(0, 0%, 91%);
 
     --clr-text: hsl(0, 0%, 75%);
     --clr-text-important: var(--clr-white);
@@ -85,6 +92,9 @@
     --time-m: 200ms;
     --time-l: 500ms;
 
+    // MISC
+    --blur-brightness-main: 45%;
+
     // MEDIA QUERIES
     @include small-device-up {
         --site-margins: var(--space-lm);
@@ -104,9 +114,16 @@
 }
 
 [data-theme="light"] {
-    --clr-main: white;
-    --clr-text: hsl(0, 0%, 40%);
-    --clr-text-important: var(--clr-black);
+    --clr-main-s: 0%;
+    --clr-main-l: 98%;
+    --clr-main: var(--clr-white);
 
-    --clr-scores-lightness: 35%;
+    --clr-text: hsl(0, 0%, 40%);
+    --clr-text-important: hsl(0, 0%, 5%);
+
+    --clr-scores-lightness: 10%;
+    --clr-score-bar-full: hsl(0, 0%, 80%);
+    --clr-score-bar-empty: hsl(0, 0%, 85%);
+
+    --blur-brightness-main: 110%;
 }

@@ -1,13 +1,19 @@
 .cards-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   align-items: flex-start;
+  grid-template-columns: 1fr;
   justify-content: center;
   gap: var(--space-ml);
 }
-.cards-section br,
-.cards-section i {
-  display: none;
+@media (min-width: 576px) {
+  .cards-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 990px) {
+  .cards-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*# sourceMappingURL=cards_section.css.map */
