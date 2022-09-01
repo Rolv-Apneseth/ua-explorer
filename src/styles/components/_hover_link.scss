@@ -1,3 +1,5 @@
+@use "../abstracts/media_queries" as *;
+
 @mixin hoverLink {
     position: relative;
 
@@ -6,10 +8,17 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 0;
+        opacity: 0;
         background-color: var(--clr-text-important);
-        transition: width var(--transition-duration);
         height: var(--thickness-s);
+        transition-duration: var(--transition-duration);
+        transition-property: opacity;
+
+        @include no-reduced-motion {
+            opacity: 1;
+            width: 0;
+            transition-property: width;
+        }
     }
 
     &:hover {
@@ -17,6 +26,7 @@
 
         &::before {
             width: 100%;
+            opacity: 1;
         }
     }
 }

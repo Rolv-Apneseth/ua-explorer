@@ -1,10 +1,16 @@
+@use "../abstracts/media_queries" as *;
+
 i {
     font-style: unset;
+    font-size: var(--font-size-m);
 
     &::after {
         display: block;
         width: max-content;
-        transition: transform var(--animation-duration);
+
+        @include no-reduced-motion {
+            transition: transform var(--animation-duration);
+        }
     }
 }
 
@@ -17,6 +23,7 @@ i {
 .icon-find {
     &::after {
         content: "\26B2";
+        font-weight: 700;
         transform: rotate(-45deg) scale(1.15);
     }
 }

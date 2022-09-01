@@ -2,12 +2,14 @@
 @use "./hover_link" as *;
 @use "../abstracts/media_queries" as *;
 
-@keyframes startup {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(var(--space-xs));
+@include no-reduced-motion {
+    @keyframes startup {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(var(--space-xs));
+        }
     }
 }
 
@@ -26,13 +28,16 @@
     align-items: center;
 
     transform: translateY(-100%);
-    transition-property: background-color, transform, box-shadow;
+    transition-property: background-color;
     transition-duration: var(--animation-duration);
 
-    // Statup animation, only runs once --------------------------
-    animation-name: startup;
-    animation-duration: var(--animation-duration);
-    //------------------------------------------------------------
+    @include no-reduced-motion {
+        transition-property: background-color, transform, box-shadow;
+        // Statup animation, only runs once --------------------------
+        animation-name: startup;
+        animation-duration: var(--animation-duration);
+        //------------------------------------------------------------
+    }
 
     a {
         font-size: var(--font-size-l);
@@ -42,6 +47,7 @@
         color: var(--clr-text-important);
         min-width: max-content;
         font-size: var(--font-size-ml);
+        font-weight: 500;
     }
 
     &.appear {
@@ -54,8 +60,8 @@
         &:not(.active):not(.initial-state) {
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             background-color: hsla(
-                var(--clr-secondary-h),
-                var(--clr-secondary-s),
+                var(--clr-main-h),
+                var(--clr-main-s),
                 var(--clr-main-l),
                 0.9
             );
@@ -120,7 +126,7 @@
             }
 
             a {
-                font-weight: bold;
+                font-weight: 600;
                 @include hoverLink;
             }
         }

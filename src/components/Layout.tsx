@@ -1,4 +1,5 @@
 import React from "react"
+import { MotionConfig } from "framer-motion"
 import { throttle } from "underscore"
 
 import Head from "./Head"
@@ -46,7 +47,7 @@ const Layout: React.FC<Props> = props => {
     }, [])
 
     return (
-        <>
+        <MotionConfig reducedMotion="user">
             <Head />
 
             <Header
@@ -63,7 +64,7 @@ const Layout: React.FC<Props> = props => {
             <main className={topbarActive ? "blur" : ""}>{props.children}</main>
 
             <Footer />
-        </>
+        </MotionConfig>
     )
 }
 
