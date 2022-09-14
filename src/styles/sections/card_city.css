@@ -31,6 +31,7 @@
 .card-city .urban-area-buttons {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-m);
 }
