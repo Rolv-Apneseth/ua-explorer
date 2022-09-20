@@ -5,6 +5,7 @@ import { throttle } from "underscore"
 import Head from "./Head"
 import Header from "./Header"
 import Footer from "./Footer"
+import BackToTop from "./BackToTop"
 
 import "../styles/global.css"
 
@@ -61,9 +62,13 @@ const Layout: React.FC<Props> = props => {
                 setTheme={setTheme}
             />
 
-            <main className={topbarActive ? "blur" : ""}>{props.children}</main>
+            <div className={`page-container ${topbarActive && "blur"}`}>
+                <BackToTop hidden={atStartingPosition} />
 
-            <Footer />
+                <main>{props.children}</main>
+
+                <Footer />
+            </div>
         </MotionConfig>
     )
 }

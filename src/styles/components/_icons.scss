@@ -33,3 +33,13 @@ i {
         content: "\21CA";
     }
 }
+
+.icon-move-up {
+    &::after {
+        content: "\2770";
+        font-weight: 700;
+        font-size: var(--font-size-l);
+        // Attempt to center icon
+        transform: rotate(90deg) translateY(-3%) translateX(-3%);
+    }
+}

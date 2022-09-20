@@ -21,14 +21,10 @@ body {
 main {
     position: relative;
     transition: filter var(--animation-duration);
-    margin: 0 var(--site-margins);
-    max-width: var(--site-content-width);
+    width: 100%;
+    /* max-width: var(--site-content-width); */
     padding: var(--space-xl) 0;
     overflow-x: visible;
-
-    &.blur {
-        filter: blur(0.75rem) brightness(var(--blur-brightness-main));
-    }
 }
 
 a {
@@ -37,4 +33,13 @@ a {
 
 img {
     width: 100%;
+}
+
+.page-container {
+    margin: 0 var(--site-margins);
+    max-width: var(--site-content-width);
+}
+
+.blur {
+    filter: blur(0.75rem) brightness(var(--blur-brightness-main));
 }
