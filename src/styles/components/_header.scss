@@ -46,7 +46,7 @@
     .page-heading {
         color: var(--clr-text-important);
         min-width: max-content;
-        font-size: var(--font-size-ml);
+        font-size: var(--font-size-l);
         font-weight: 500;
     }
 
@@ -160,10 +160,6 @@
         // prevent changes if mobile nav is open
         &:not(.active) {
             min-height: var(--space-l);
-
-            .page-heading {
-                font-size: var(--font-size-l);
-            }
 
             .topbar-toggle {
                 display: none;

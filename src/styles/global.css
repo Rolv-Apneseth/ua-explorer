@@ -113,10 +113,20 @@ body {
 }
 html {
   scroll-behavior: smooth;
-  font-size: 15px;
+  font-size: 11px;
 }
 html p {
   line-height: 1.5;
+}
+@media (min-width: 576px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (min-width: 990px) {
+  html {
+    font-size: 15px;
+  }
 }
 
 body {
@@ -202,11 +212,11 @@ img {
       var(--clr-scores-saturation),
       var(--clr-scores-lightness)
   );
-  --font-size-s: clamp(1rem, 2vw, 1.2rem);
-  --font-size-m: clamp(1.3rem, 3vw, 1.4rem);
-  --font-size-ml: clamp(1.5rem, 6vw, 2.1rem);
-  --font-size-l: clamp(2.3rem, 2.5vw, 2.5rem);
-  --font-size-xl: clamp(2.5rem, 2vw, 5rem);
+  --font-size-s: 1rem;
+  --font-size-m: 1.1rem;
+  --font-size-ml: 1.6rem;
+  --font-size-l: 2.2rem;
+  --font-size-xl: 2.9rem;
   --thickness-s: 1px;
   --thickness-m: 0.1rem;
   --thickness-l: 0.2rem;
@@ -304,7 +314,7 @@ img {
 .header .page-heading {
   color: var(--clr-text-important);
   min-width: max-content;
-  font-size: var(--font-size-ml);
+  font-size: var(--font-size-l);
   font-weight: 500;
 }
 .header.appear {
@@ -411,9 +421,6 @@ img {
 @media (min-width: 990px) {
   .header:not(.active) {
     min-height: var(--space-l);
-  }
-  .header:not(.active) .page-heading {
-    font-size: var(--font-size-l);
   }
   .header:not(.active) .topbar-toggle {
     display: none;

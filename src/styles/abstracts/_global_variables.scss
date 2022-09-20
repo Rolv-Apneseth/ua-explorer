@@ -57,11 +57,11 @@
     );
 
     // FONT SIZES
-    --font-size-s: clamp(1rem, 2vw, 1.2rem);
-    --font-size-m: clamp(1.3rem, 3vw, 1.4rem);
-    --font-size-ml: clamp(1.5rem, 6vw, 2.1rem);
-    --font-size-l: clamp(2.3rem, 2.5vw, 2.5rem);
-    --font-size-xl: clamp(2.5rem, 2vw, 5rem);
+    --font-size-s: 1rem;
+    --font-size-m: 1.1rem;
+    --font-size-ml: 1.6rem;
+    --font-size-l: 2.2rem;
+    --font-size-xl: 2.9rem;
 
     // MEASUREMENTS
     --thickness-s: 1px;
