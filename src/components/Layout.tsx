@@ -15,9 +15,13 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = props => {
-    const prefersLight = window.matchMedia(
-        "(prefers-color-scheme: light)"
-    ).matches
+    let prefersLight = false
+
+    if (typeof window !== "undefined") {
+        prefersLight = window.matchMedia(
+            "(prefers-color-scheme: light)"
+        ).matches
+    }
 
     const [isDarkMode, setIsDarkMode] = React.useState(!prefersLight)
     const [topbarActive, setTopbarActive] = React.useState(false)
